@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 23:12+0000\n"
+"POT-Creation-Date: 2021-11-18 23:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,14 +20,54 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: autocli/settings.py:193
+#: autocli/settings.py:194 inventory/templates/inventory/test.html:54
 msgid "English"
 msgstr "Angielski"
 
-#: autocli/settings.py:194
+#: autocli/settings.py:195 inventory/templates/inventory/test.html:58
 msgid "German"
 msgstr "Niemiecki"
 
-#: autocli/settings.py:195
+#: autocli/settings.py:196 inventory/templates/inventory/test.html:62
 msgid "Polish"
 msgstr "Polski"
+
+#: templates/base.html:56
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: templates/base.html:64
+msgid "Inventory"
+msgstr "Inwentaryzacja"
+
+#: templates/base.html:72
+msgid "Devices"
+msgstr "Urządzenia"
+
+#: templates/base.html:80
+msgid "Credentials"
+msgstr "Dane uwierzytelniające"
+
+#: templates/base.html:88
+msgid "Groups"
+msgstr "Grupy"
+
+#: templates/base.html:96
+msgid "Colors"
+msgstr "Kolory"
+
+#: templates/base.html:107
+msgid "Provisioning"
+msgstr "Provisioning"
+
+#: templates/base.html:115
+msgid "Diagrams"
+msgstr "Schematy"
+
+#: templates/base.html:123
+msgid "Administration"
+msgstr "Administracja"
+
+#: templates/base.html:192
+msgid "AutoCli Network Automation Tool"
+msgstr "AutoCli Narzędzie do automatyzacji sieci komputerowych"

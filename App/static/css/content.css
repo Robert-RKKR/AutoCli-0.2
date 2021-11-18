@@ -22,6 +22,11 @@
     #model-search div {
         padding-left: 30px;
         padding-right: 30px;
+        background: #efefef;
+    }
+
+    #model-search div:hover {
+        background: var(--color_strong_red);
     }
 
     

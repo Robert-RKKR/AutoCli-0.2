@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 23:13+0000\n"
+"POT-Creation-Date: 2021-11-18 23:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: autocli/settings.py:193
+#: autocli/settings.py:194 inventory/templates/inventory/test.html:54
 msgid "English"
 msgstr ""
 
-#: autocli/settings.py:194
+#: autocli/settings.py:195 inventory/templates/inventory/test.html:58
 msgid "German"
 msgstr ""
 
-#: autocli/settings.py:195
+#: autocli/settings.py:196 inventory/templates/inventory/test.html:62
 msgid "Polish"
+msgstr ""
+
+#: templates/base.html:56
+msgid "Dashboard"
+msgstr ""
+
+#: templates/base.html:64
+msgid "Inventory"
+msgstr ""
+
+#: templates/base.html:72
+msgid "Devices"
+msgstr ""
+
+#: templates/base.html:80
+msgid "Credentials"
+msgstr ""
+
+#: templates/base.html:88
+msgid "Groups"
+msgstr ""
+
+#: templates/base.html:96
+msgid "Colors"
+msgstr ""
+
+#: templates/base.html:107
+msgid "Provisioning"
+msgstr ""
+
+#: templates/base.html:115
+msgid "Diagrams"
+msgstr ""
+
+#: templates/base.html:123
+msgid "Administration"
+msgstr ""
+
+#: templates/base.html:192
+msgid "AutoCli Network Automation Tool"
 msgstr ""
