@@ -30,4 +30,52 @@
         </div>
     </div>
 
+    <!-- Grid container for models -->
+    <div id="model-grid">
+                        
+        <!-- Single model item -->
+        <div class="model-item">
+            <div class="model-subitem grid-box">
+
+                <!-- Single model item header -->
+                <div class="model-item-header">
+                    <img class="box-header-svg" src="{% static 'ico/model/device/switch.svg' %}" alt="switch">
+                    <div>
+                        <h3><a href="#">RKKR-LAB-RW-1</a></h3>
+                        <q>Created: Nov. 1, 2021, 09:03 p.m</q></br>
+                        <q>Updated: Nov. 10, 2021, 10:52 p.m</q>
+                    </div>
+                </div>
+
+                <!-- Single model item body -->
+                <div class="model-item-body">
+                    <table>
+                        <tr>
+                            <th>{% translate "English" %}:</th>
+                            <td>192.158.1.1</td>
+                        </tr>
+                        <tr>
+                            <th>{% translate "German" %}:</th>
+                            <td>Cisco-IOS XE</td>
+                        </tr>
+                        <tr>
+                            <th>{% translate "Polish" %}:</th>
+                            <td>17.1.2</td>
+                        </tr>
+                        <tr>
+                            <th>Platform:</th>
+                            <td>C9300</td>
+                        </tr>
+                        <tr>
+                            <th>Uptime:</th>
+                            <td>12d 1h 32m 23s</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
 {% endblock %}

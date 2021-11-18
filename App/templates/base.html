@@ -1,7 +1,9 @@
 {% load i18n %}
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
 
     <head>
 
@@ -128,15 +130,15 @@
 
             <!-- Main page language panel -->
             <div id="language">
-                <a href="#" class="click-animation">
-                    <img class="menu-svg" src="{% static 'ico/flags/germany.svg' %}" alt="DE">
+
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for lang in languages %}
+                <a href="/{{ lang.code }}{{ url }}" class="click-animation">
+                    <img class="menu-svg" src="{% static 'ico/flags/' %}{{ lang.code }}.svg" alt="{{ lang.code }}">
                 </a>
-                <a href="#" class="click-animation">
-                    <img class="menu-svg" src="{% static 'ico/flags/united-kingdom.svg' %}" alt="EN">
-                </a>
-                <a href="#" class="click-animation">
-                    <img class="menu-svg" src="{% static 'ico/flags/poland.svg' %}" alt="PL">
-                </a>
+                {% endfor %}
             </div>
 
         </div>
@@ -185,10 +187,10 @@
 
                 </div>
 
-                <!-- Page footer -->
+                <!-- Page footer 
                 <div class="grid-box margin-half" id="page-footer">
                     <p>© 2021 Robert Tadeusz Kucharski - AutoCli Network Automation Tool</p>
-                </div>
+                </div>-->
 
             </div>
 

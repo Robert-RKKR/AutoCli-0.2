@@ -1,3 +1,6 @@
+# Django Import:
 from django.shortcuts import render
 
-# Create your views here.
+# Inventory views:
+def login_page(request):
+    return render(request, 'administration/login_page.html')

@@ -14,13 +14,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 # Django Import:
+from django.utils.translation import gettext_lazy as _
+from django.conf.urls.i18n import i18n_patterns
 from django.urls import path, include
 from django.contrib import admin
 
 # Application Import:
+from administration.views import login_page
 
 # Urls patterns:
 urlpatterns = [
+    path('', login_page),
+    path('/', login_page),
     path('admin/', admin.site.urls),
-    path('inventory/', include('inventory.urls')),
 ]
+
+urlpatterns += i18n_patterns (
+    path('inventory/', include('inventory.urls')),
+    prefix_default_language=True,
+)
