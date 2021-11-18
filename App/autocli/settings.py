@@ -31,12 +31,22 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Django Apps:
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Third-Party Apps:
+    'rest_framework.authtoken',
+    'rest_framework',
+    'django_celery_beat',
+    'channels',
+
+    # Local Apps:
+    'inventory.apps.InventoryConfig'
 ]
 
 MIDDLEWARE = [
@@ -70,7 +80,45 @@ TEMPLATES = [
     },
 ]
 
+# Static and media
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (BASE_DIR.joinpath('static'),)
+STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+]
+
+
+# WSGI / ASGI
 WSGI_APPLICATION = 'autocli.wsgi.application'
+ASGI_APPLICATION = 'autocli.asgi.application'
+
+
+# Rest api
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
+
+
+# For Websocket Support
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379)],
+        },
+    },
+}
+
+
+# Celery configuration
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 
 # Database
