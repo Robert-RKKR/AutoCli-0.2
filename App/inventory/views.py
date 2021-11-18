@@ -1,3 +1,6 @@
+# Django Import:
 from django.shortcuts import render
 
-# Create your views here.
+# Inventory views:
+def test(request):
+    return render(request, 'inventory/test.html')
