@@ -54,6 +54,10 @@ class GroupDeviceRelation(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    # Status values:
+    root = models.BooleanField(default=False)
+    deleted = models.BooleanField(default=False)
+
     # Relations values:
     device = models.ForeignKey(Device, on_delete=models.PROTECT)
     group = models.ForeignKey(Group, on_delete=models.PROTECT)
