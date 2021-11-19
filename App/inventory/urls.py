@@ -1,7 +1,7 @@
+# Django Import:
 from django.urls import path
-from . import views
-from .views import test
+from .views.device import device_add_one
 
 urlpatterns = [
-    path('test', test),
+    path('device_add_one', device_add_one),
 ]

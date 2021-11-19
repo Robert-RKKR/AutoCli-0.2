@@ -103,3 +103,46 @@
 
 
         /*   -----   PAGE TOP   -----   */
+
+
+
+
+
+    /*   ---------------------------   */
+    /*   ----     FORM GRID     ----   */
+    #form-grid {
+        flex-direction: column;
+        margin-left: var(--box_padding_half);
+        margin-right: var(--box_padding_half);
+    }
+
+
+        /*   -----   FORM HEAD   -----   */
+        .form-header {
+            padding: var(--box_padding_full);
+            background: var(--color_light_gray);
+            color: var(--color_font_white);
+        }
+
+
+        /*   -----   FORM BODY   -----   */
+        .form-body {
+            padding: var(--box_padding_full_and_half);
+        }
+
+        .form-body form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-body form input, select {
+            background: var(--color_page_background);
+            padding: 5px;
+            margin: 2px;
+            border: 0px;
+        }
+
+        .form-body form label {
+            padding: 5px 0px;
+            margin: 2px;
+        }
