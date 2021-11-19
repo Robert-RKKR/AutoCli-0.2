@@ -5,7 +5,9 @@ from rest_framework import serializers
 from inventory.models import *
 
 
-# Serializers classes:
+
+# ----------------------------- DEWICE ----------------------------- #
+
 class DeviceGetSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -31,6 +33,8 @@ class DeviceGetSerializer(serializers.ModelSerializer):
             'certificate',
         ]
 
+
+# ----------------------------- COLOR ----------------------------- #
 class ColorGetSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -46,4 +50,16 @@ class ColorGetSerializer(serializers.ModelSerializer):
             'devices',
             'groups',
             'credentials',
+        ]
+
+
+class ColorPostSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        app_label = 'api'
+        model = Color
+        fields = [
+            'name',
+            'value',
+            'description',
         ]

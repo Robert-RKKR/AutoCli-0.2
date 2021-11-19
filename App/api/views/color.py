@@ -7,6 +7,7 @@ from ..pagination import *
 # Serializers Import:
 from ..serializers import (
     ColorGetSerializer,
+    ColorPostSerializer,
 )
 
 # Application Import:
@@ -17,3 +18,8 @@ class ColorAllAPI(generics.ListAPIView):
     queryset = Color.objects.all()
     serializer_class = ColorGetSerializer
     pagination_class = SmallResultsPagination
+
+
+class ColorAddAPI(generics.CreateAPIView):
+    queryset = Color.objects.all()
+    serializer_class = ColorPostSerializer

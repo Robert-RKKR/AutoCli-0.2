@@ -4,8 +4,21 @@
 
 {% block content %}
 
+    <!-- Message box -->
+    <div class="message critical collapse">
+        <div class="message-text">
+            <img class="message-ico" src="static/ico/message/error.svg" alt="X">
+            <span><strong>Critical:</strong>{{ form.subject.errors }}
+                {{ form.subject.label_tag }}
+                {{ form.subject }}</span>
+        </div>
+        <div class="message-button">
+            <svg class="message-close" height="512pt" viewBox="0 0 512 512" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"/><path d="m176.8125 351.1875c-4.097656 0-8.195312-1.554688-11.308594-4.691406-6.25-6.25-6.25-16.382813 0-22.632813l158.398438-158.402343c6.253906-6.25 16.386718-6.25 22.636718 0s6.25 16.382812 0 22.636718l-158.402343 158.398438c-3.15625 3.136718-7.25 4.691406-11.324219 4.691406zm0 0"/><path d="m335.1875 351.1875c-4.09375 0-8.191406-1.554688-11.304688-4.691406l-158.398437-158.378906c-6.253906-6.25-6.253906-16.382813 0-22.632813 6.25-6.253906 16.382813-6.253906 22.632813 0l158.398437 158.398437c6.253906 6.25 6.253906 16.382813 0 22.632813-3.132813 3.117187-7.230469 4.671875-11.328125 4.671875zm0 0"/></svg>
+        </div>
+    </div>
+
+    <!-- Model modify panel -->
     <div id="top-panel">
-        <!-- Model modify panel -->
         <div class="grid-box margin-half" id="model-panel">
             <div class="action-group">
                 <img class="action-button click-animation" src="{% static 'ico/main/grid.svg' %}" alt="Ico">
@@ -26,29 +39,15 @@
         
         <!-- Form header -->
         <div class="form-header">
-            <h3>Add {{ model_name }} object</h3>  
+            <h3>Add a new {{ model_name }} object</h3>  
         </div>
 
         <!-- Form body -->
         <div class="form-body">
-            <form method="post">{% csrf_token %}
-
-                <div class="form-item">
-                    <label for="name">{% translate "Inventory" %}</label>
-                    <input id="name" type="text">
-                </div>
-
-                <div class="form-item">
-                    <label for="xxx"></label>
-                    <input id="xxx" type="text">
-                </div>
-
-                <div class="form-item">
-                    <label for="xxx"></label>
-                    <input id="xxx" type="text">
-                </div>
-
-                <button class="action-button" type="submit">Submit</button>
+            <form method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button class="form-button action-button" type="submit" value="Submit">{% translate "Submit" %}</button>
             </form>
         </div>
 

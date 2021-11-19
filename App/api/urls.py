@@ -8,4 +8,5 @@ urlpatterns = [
 
     # Color API:
     path('color/all', ColorAllAPI.as_view(), name='color_all'),
+    path('color/add', ColorAddAPI.as_view(), name='color_add'),
 ]
