@@ -25,7 +25,6 @@ from administration.views import login_page
 # Urls patterns:
 urlpatterns = [
     path('', login_page),
-    path('/', login_page),
     path('admin/', admin.site.urls),
 ]
 
