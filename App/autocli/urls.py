@@ -18,6 +18,7 @@ from django.utils.translation import gettext_lazy as _
 from django.conf.urls.i18n import i18n_patterns
 from django.urls import path, include
 from django.contrib import admin
+import debug_toolbar
 
 # Application Import:
 from administration.views import login_page
@@ -26,6 +27,7 @@ from administration.views import login_page
 urlpatterns = [
     path('', login_page),
     path('admin/', admin.site.urls),
+    path('__debug__/', include(debug_toolbar.urls)),
 ]
 
 urlpatterns += i18n_patterns (

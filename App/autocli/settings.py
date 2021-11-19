@@ -31,6 +31,9 @@ SECRET_KEY = 'django-insecure-&!qd(a67$1o=3dogw+d%1h8c=lw519i6b05i2c74r&sb2(+j(&
 DEBUG = True
 
 ALLOWED_HOSTS = []
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third-Party Apps:
+    'debug_toolbar',
     'rest_framework.authtoken',
     'rest_framework',
     'django_celery_beat',
@@ -63,6 +67,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
