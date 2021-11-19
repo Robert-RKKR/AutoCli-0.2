@@ -6,14 +6,14 @@ from ..pagination import *
 
 # Serializers Import:
 from ..serializers import (
-    DeviceGetSerializer,
+    ColorGetSerializer,
 )
 
 # Application Import:
-from inventory.models.device import Device
+from inventory.models.color import Color
 
 # ALL Device Views:
-class DeviceAllAPI(generics.ListAPIView):
-    queryset = Device.active.all()
-    serializer_class = DeviceGetSerializer
+class ColorAllAPI(generics.ListAPIView):
+    queryset = Color.objects.all()
+    serializer_class = ColorGetSerializer
     pagination_class = SmallResultsPagination

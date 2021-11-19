@@ -2,7 +2,7 @@
 from rest_framework import serializers
 
 # Application Import:
-from inventory.models.device import Device
+from inventory.models import *
 
 
 # Serializers classes:
@@ -31,3 +31,19 @@ class DeviceGetSerializer(serializers.ModelSerializer):
             'certificate',
         ]
 
+class ColorGetSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        app_label = 'api'
+        model = Color
+        fields = [
+            'id',
+            'created',
+            'updated',
+            'name',
+            'value',
+            'description',
+            'devices',
+            'groups',
+            'credentials',
+        ]

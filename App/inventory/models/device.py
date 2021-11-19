@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 # Applications Import:
-from ..managers import Base, ActiveManager
+from ..managers import NotDeleted, ActiveManager
 from .icons import ICONS
 
 # Other models Import:
@@ -65,9 +65,8 @@ class Device(models.Model):
     certificate = models.BooleanField(default=False)
 
     # Object managers:
-    objects = models.Manager()
+    objects = NotDeleted()
     active = ActiveManager()
-    base = Base()
 
     # Model representation:
     def __str__(self) -> str:

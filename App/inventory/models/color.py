@@ -11,8 +11,7 @@ from .group import Group
 from ..validators import ColorValueValidator
 
 # Applications Import:
-from ..managers import ActiveManager
-
+from ..managers import NotDeleted
 
 # Model code:
 class Color(models.Model):
@@ -32,6 +31,7 @@ class Color(models.Model):
     # Main model values:
     name = models.CharField(max_length=32, blank=False, unique=True)
     value = models.CharField(
+        unique=True,
         max_length=7,
         validators=[color_validator],
         help_text=_('Hexadecimal representation of colour, for example #73a6ff.'),
@@ -67,6 +67,8 @@ class Color(models.Model):
             # Change deleted value to True, to inform that object is deleted:
             self.deleted = True
 
+    # Object managers:
+    objects = NotDeleted()
 
     # Meta sub class:
     class Meta:
