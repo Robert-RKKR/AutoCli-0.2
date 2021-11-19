@@ -55,8 +55,10 @@ INSTALLED_APPS = [
     'channels',
 
     # Local Apps:
+    'api.apps.ApiConfig',
     'administration.apps.AdministrationConfig',
     'inventory.apps.InventoryConfig',
+    'logger.apps.LoggerConfig',
 ]
 
 MIDDLEWARE = [
