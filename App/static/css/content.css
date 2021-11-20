@@ -3,6 +3,64 @@
 
 
     /*   -----   MESSAGE   -----   */
+    .message {
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+        margin-left: var(--model_padding);
+    }
+
+    .message-ico {
+        width: 50px;
+        height: 50px;
+    }
+
+    .message-text {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .message-text span {
+        margin: 0px 40px 0px 20px;
+    }
+
+    .message-button  {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .message-close {
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+    }
+
+        
+        /*   -----   MESSAGE ERROR, CRITICAL   -----   */
+        .critical {
+            background: var(--color_light_red);
+            border: var(--color_strong_red) solid 2px;
+            color: var(--color_strong_red);
+        }
+
+        .critical .message-close {
+            fill: var(--color_strong_red);
+        }
+
+        /*   -----   MESSAGE INFORM   -----   */
+        .inform {
+            background: var(--color_light_blue);
+            border: var(--color_strong_blue) solid 2px;
+            color: var(--color_strong_blue);
+        }
+
+        .inform .message-close {
+            fill: var(--color_strong_blue);
+        }
 
 
     /*   -----   MODEL TOOLS   -----   */
@@ -121,7 +179,7 @@
 
 
         /*   -----   FORM HEAD   -----   */
-        .form-header {
+        #form-grid .form-header {
             padding: var(--box_padding_full);
             background: var(--color_light_gray);
             color: var(--color_font_white);
@@ -129,61 +187,48 @@
 
 
         /*   -----   FORM BODY   -----   */
-        .form-body {
+        #form-grid .form-body {
             padding: var(--box_padding_full_and_half);
         }
 
-        .form-body form {
+        #form-grid .form-body form {
             display: flex;
             flex-direction: column;
         }
-
-        .form-body form input, select {
+    
+        #form-grid .form-body form input, select {
             background: var(--color_page_background);
             padding: var(--box_padding_half);
-            margin: var(--box_padding_half);
+            margin: var(--box_padding_half) 0px;
             border: 0px;
         }
-
-        .form-body form label {
+    
+        #form-grid .form-body form label {
             padding: var(--box_padding_half) 0px;
             margin: var(--box_padding_half) 0px;
         }
 
 
-            /*   -----   FORM BODY GROUP   -----   */
-            .form-group {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .form-group > div {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-
-            .form-group-name {
-                margin-bottom: var(--box_padding_half);
+            /*   -----   FORM BODY ERRORS   -----   */
+            #form-grid .errorlist {
+                background: var(--color_strong_red);
+                padding: var(--box_padding_full);
+                color: var(--color_font_white);
             }
 
 
-            /*   -----   FORM BODY ITEM   -----   */
-            .form-item {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                align-items: center;
-                justify-content: center;
+            /*   -----   FORM BODY HELP TEXT   -----   */
+            #form-grid .helptext {
+                display: none;
             }
 
-            .form-item input {
-                color: var(--color_strong_gray);
+            #form-grid br {
+                display: none;
             }
 
 
             /*   -----   FORM BODY SUBMIT BUTTON   -----   */
-            .form-button {
+            #form-grid .form-button {
                 padding: var(--box_padding_full);
                 background: var(--color_light_gray);
                 margin-top: var(--box_padding_full_and_half);

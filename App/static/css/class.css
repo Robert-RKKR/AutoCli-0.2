@@ -38,6 +38,14 @@
 
 }
 
+.toggled {
+    margin-left: -16rem;
+}
+
+.collapse {
+    display: none;
+}
+
 .search {
     background: var(--color_box_background);
     color: var(--color_light_gray);
@@ -50,10 +58,6 @@
 
 *:focus {
     outline: none;
-}
-
-.collapse {
-    display: none;
 }
 
 .grid-box {

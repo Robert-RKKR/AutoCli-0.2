@@ -40,23 +40,46 @@ class Device(models.Model):
     https_status = models.BooleanField(default=False)
 
     # Main model values:
-    name = models.CharField(max_length=16, blank=False, unique=True)
+    name = models.CharField(
+        verbose_name=_('Device name'),
+        max_length=16,
+        blank=False,
+        unique=True
+    )
     hostname = models.CharField(
+        verbose_name=_('IP address'),
         max_length=64,
         blank=False,
         unique=True,
         error_messages={
             'null': _('This field is mandatory.'),
             'blank': _('This field is mandatory.'),
-            'unique': _('This field must be unique.'),
         },
         help_text=_('Enter a valid IP address or DNS resolvable hostname.'),
     )
-    device_type = models.IntegerField(choices=DEVICE_TYPE, default=0)
-    ico = models.IntegerField(choices=ICONS, default=0)
-    ssh_port = models.IntegerField(default=22)
-    https_port = models.IntegerField(default=443)
-    description = models.CharField(max_length=256, default="Device description.")
+    device_type = models.IntegerField(
+        verbose_name=_('Device type'),
+        choices=DEVICE_TYPE,
+        default=0
+    )
+    ico = models.IntegerField(
+        verbose_name=_('Device graphic'),
+        choices=ICONS,
+        default=0
+    )
+    ssh_port = models.IntegerField(
+        verbose_name=_('SSH port'),
+        default=22
+    )
+    https_port = models.IntegerField(
+        verbose_name=_('HTTPS port'),
+        default=443
+    )
+    description = models.CharField(
+        verbose_name=_('Description'),
+        max_length=256,
+        default="Device description."
+    )
 
     # Security and credentials:
     credential = models.ForeignKey(Credential, on_delete=models.PROTECT, null=True, blank=True)
