@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
         <!-- Page title -->
-        <title>AutoCli</title>
+        <title>AutoCli - {{ page_name }}</title>
         
         <!-- Custom CSS -->
         <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
@@ -67,7 +67,7 @@
 
                             <!-- Sub-menu item -->
                             <li class="submenu-item">
-                                <a href="#" class="submenu-link click-animation">
+                                <a href="/{{ LANGUAGE_CODE }}/inventory/device/search" class="submenu-link click-animation">
                                     <svg class="menu-svg" viewBox="0 -192 469.33333 469" xmlns="http://www.w3.org/2000/svg"><path d="m437.332031.167969h-405.332031c-17.664062 0-32 14.335937-32 32v21.332031c0 17.664062 14.335938 32 32 32h405.332031c17.664063 0 32-14.335938 32-32v-21.332031c0-17.664063-14.335937-32-32-32zm0 0"/></svg>
                                     <span>{% translate "Devices" %}</span>
                                 </a>
@@ -170,7 +170,7 @@
                 {% get_available_languages as LANGUAGES %}
                 {% get_language_info_list for LANGUAGES as languages %}
                 {% for lang in languages %}
-                <a href="/{{ lang.code }}/inventory/test" class="click-animation">
+                <a href="/{{ lang.code }}{{ url }}" class="click-animation">
                     <img class="menu-svg" src="{% static 'ico/flags/' %}{{ lang.code }}.svg" alt="{{ lang.code }}">
                 </a>
                 {% endfor %}
@@ -187,6 +187,10 @@
                 <!-- Button to close left side of page -->
                 <div id="close-page-left">
                     <img class="click-animation" id="sidebar-close" src="{% static 'ico/main/close_left.svg' %}" alt="=">
+                </div>
+
+                <div id="page-name">
+                    <h2>{{ page_name }}</h2>
                 </div>
 
                 <!-- User menu -->
@@ -217,6 +221,56 @@
 
                 <!-- All page content -->
                 <div id="page-content">
+
+                    <!-- Message box -->
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="message inform">
+                                <div class="message-text">
+                                    <img class="message-ico" src="{% static 'ico/message/' %}{{ message.message_ico }}.svg" alt="X">
+                                    <span><strong>{{ message.message_type }}:</strong> {{ message.message_text }}</span>
+                                </div>
+                                <div class="message-button">
+                                    <svg class="message-close" height="512pt" viewBox="0 0 512 512" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m256 512c-141.164062 0-256-114.835938-256-256s114.835938-256 256-256 256 114.835938 256 256-114.835938 256-256 256zm0-480c-123.519531 0-224 100.480469-224 224s100.480469 224 224 224 224-100.480469 224-224-100.480469-224-224-224zm0 0"/><path d="m176.8125 351.1875c-4.097656 0-8.195312-1.554688-11.308594-4.691406-6.25-6.25-6.25-16.382813 0-22.632813l158.398438-158.402343c6.253906-6.25 16.386718-6.25 22.636718 0s6.25 16.382812 0 22.636718l-158.402343 158.398438c-3.15625 3.136718-7.25 4.691406-11.324219 4.691406zm0 0"/><path d="m335.1875 351.1875c-4.09375 0-8.191406-1.554688-11.304688-4.691406l-158.398437-158.378906c-6.253906-6.25-6.253906-16.382813 0-22.632813 6.25-6.253906 16.382813-6.253906 22.632813 0l158.398437 158.398437c6.253906 6.25 6.253906 16.382813 0 22.632813-3.132813 3.117187-7.230469 4.671875-11.328125 4.671875zm0 0"/></svg>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <!-- Model modify panel -->
+                    {% if panel %}
+                        <div id="top-panel">
+                            <div class="grid-box margin-half" id="model-panel">
+                                <div class="action-group">
+                                    {% for view in panel.views %}
+                                        <a href="/{{ LANGUAGE_CODE }}/{{ panel.link.application }}/{{ panel.link.model }}/{{ view }}">
+                                            <img class="action-button click-animation" src="{% static 'ico/main/' %}{{ view }}.svg" alt="Ico">
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                                <div class="action-group">
+                                    {% for action in panel.actions %}
+                                        <a href="/{{ LANGUAGE_CODE }}/{{ panel.link.application }}/{{ panel.link.model }}/{{ action }}">
+                                            <img class="action-button click-animation" src="{% static 'ico/main/' %}{{ action }}.svg" alt="Ico">
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Search panel -->
+                    {% if search %}
+                        <div class="grid-box margin-half margin-boundary" id="model-search">
+                            <input class="input-field search" type="search" name="name">
+                            <div class="button action-button click-animation">
+                                <img src="{% static 'ico/main/search.svg' %}" alt="Search">
+                            </div>
+                            <div class="button action-button click-animation">
+                                <img src="{% static 'ico/main/filter.svg' %}" alt="Filter">
+                            </div>
+                        </div>
+                    {% endif %}
 
                     {% block content %}{% endblock content %}
 

@@ -8,14 +8,27 @@ from ..forms import DeviceAddOneForm
 # Application Import:
 from ..models.device import Device
 
+# Device panel:
+panel = {
+    'link': {
+        'application': 'inventory',
+        'model': 'device',
+    },
+    'views': ['grid', 'list'],
+    'actions': [
+        'add', 'edit', 'delete',
+    ],
+}
+
 # Inventory views:
-def device_add_one(request):
+def add(request):
 
     # Collect basic information:
     data = {
         'url': request.path[3:],
-        'model_name': Device._meta.object_name,
+        'page_name': _('Add new device'),
         'messages': [],
+        'panel': panel,
     }
 
     # Show form if GET and form output when POST:
@@ -27,7 +40,7 @@ def device_add_one(request):
         if form.is_valid():
             message = {} # New message dict.
             new_device = form.save() 
-            message['message_text'] = new_device.name + ' ' + _('Was added to database.')
+            message['message_text'] = new_device.name + ' ' + _('was added to database.')
             message['message_type'] = _('INFORM')
             message['message_ico'] = 'inform'
             data['messages'].append(message)
@@ -40,20 +53,16 @@ def device_add_one(request):
 
         return render(request, 'inventory/add_form.html', data)
 
-def test(request):
+
+def search(request):
+
     # Collect basic information:
     data = {
         'url': request.path[3:],
+        'page_name': _('All devices search'),
         'messages': [],
+        'panel': panel,
+        'search': 'device'
     }
 
-    test = ["RKKR", "Cisco"]
-
-    for row in test:
-        message = {}
-        message['message_text'] = row
-        message['message_type'] = _('INFORM')
-        message['message_ico'] = 'inform'
-        data['messages'].append(message)
-
-    return render(request, 'message.html', data)
+    return render(request, 'inventory/search.html', data)
