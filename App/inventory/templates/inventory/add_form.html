@@ -9,7 +9,11 @@
             <!-- Message box -->
             <div class="message inform">
                 <div class="message-text">
-                    <img class="message-ico" src="{% static 'ico/message/inform.svg' %}" alt="X">
+                    {% if message.message_ico == 'inform' %}
+                        <img class="message-ico" src="{% static 'ico/message/inform.svg' %}" alt="X">
+                    {% elif message.message_ico == 'error' %}
+                        <img class="message-ico" src="{% static 'ico/message/error.svg' %}" alt="X">
+                    {% endif %}
                     <span><strong>{{ message.message_type }}:</strong> {{ message.message_text }}</span>
                 </div>
                 <div class="message-button">

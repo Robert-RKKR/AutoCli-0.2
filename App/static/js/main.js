@@ -27,3 +27,16 @@ for(let i=0; i<toggleButtons.length; i++) {
 
     });
 }
+
+// MESSAGE CLOSE ACTION:
+var messages = document.getElementsByClassName("message");
+
+for(let i=0; i<messages.length; i++) {
+    let message = messages[i]
+    let closeButton = message.getElementsByClassName("message-close")[0];
+    
+    closeButton.addEventListener("click", function(event) {
+        message.parentElement.removeChild(message);
+    })
+
+}

@@ -29,6 +29,7 @@ def device_add_one(request):
             new_device = form.save() 
             message['message_text'] = new_device.name + ' ' + _('Was added to database.')
             message['message_type'] = _('INFORM')
+            message['message_ico'] = 'inform'
             data['messages'].append(message)
         
         return render(request, 'inventory/add_form.html', data)
@@ -38,3 +39,21 @@ def device_add_one(request):
         data['form'] = DeviceAddOneForm()
 
         return render(request, 'inventory/add_form.html', data)
+
+def test(request):
+    # Collect basic information:
+    data = {
+        'url': request.path[3:],
+        'messages': [],
+    }
+
+    test = ["RKKR", "Cisco"]
+
+    for row in test:
+        message = {}
+        message['message_text'] = row
+        message['message_type'] = _('INFORM')
+        message['message_ico'] = 'inform'
+        data['messages'].append(message)
+
+    return render(request, 'message.html', data)
