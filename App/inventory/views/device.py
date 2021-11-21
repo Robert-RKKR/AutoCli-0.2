@@ -8,7 +8,12 @@ from ..forms import DeviceAddOneForm
 # Application Import:
 from ..models.device import Device
 
+# Application Filters Import:
+from ..filters import DeviceFilter, DeviceNameFilter
+
+
 # Device panel:
+main_path = '/inventory/device'
 panel = {
     'link': {
         'application': 'inventory',
@@ -19,6 +24,7 @@ panel = {
         'add', 'edit', 'delete',
     ],
 }
+
 
 # Inventory views:
 def add(request):
@@ -62,7 +68,28 @@ def search(request):
         'page_name': _('All devices search'),
         'messages': [],
         'panel': panel,
-        'search': 'device'
+        'main_path': main_path,
     }
+
+    # Collect name:
+    object_name = request.GET.get('object_name')
+    
+    if object_name == '':
+        # Collect devices:
+        devices = Device.objects.all()
+
+        # Filter:
+        devices_filter = DeviceFilter(request.GET, queryset=devices)
+        data['objects'] = devices_filter.qs
+        data['filter'] = devices_filter
+
+    else:
+        # Collect all devices:
+        devices = Device.objects.filter(name__contains=object_name)
+    
+        # Filter:
+        devices_filter = DeviceFilter(request.GET, queryset=devices)
+        data['objects'] = devices_filter.qs
+        data['filter'] = devices_filter
 
     return render(request, 'inventory/search.html', data)

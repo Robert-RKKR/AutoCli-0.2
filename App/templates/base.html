@@ -67,7 +67,7 @@
 
                             <!-- Sub-menu item -->
                             <li class="submenu-item">
-                                <a href="/{{ LANGUAGE_CODE }}/inventory/device/search" class="submenu-link click-animation">
+                                <a href="/{{ LANGUAGE_CODE }}/inventory/device/search/get?object_name=&status=1&name=&name__contains=&hostname=&hostname__contains=&device_type=&ssh_status=unknown&https_port=" class="submenu-link click-animation">
                                     <svg class="menu-svg" viewBox="0 -192 469.33333 469" xmlns="http://www.w3.org/2000/svg"><path d="m437.332031.167969h-405.332031c-17.664062 0-32 14.335937-32 32v21.332031c0 17.664062 14.335938 32 32 32h405.332031c17.664063 0 32-14.335938 32-32v-21.332031c0-17.664063-14.335937-32-32-32zm0 0"/></svg>
                                     <span>{% translate "Devices" %}</span>
                                 </a>
@@ -243,9 +243,7 @@
                             <div class="grid-box margin-half" id="model-panel">
                                 <div class="action-group">
                                     {% for view in panel.views %}
-                                        <a href="/{{ LANGUAGE_CODE }}/{{ panel.link.application }}/{{ panel.link.model }}/{{ view }}">
-                                            <img class="action-button click-animation" src="{% static 'ico/main/' %}{{ view }}.svg" alt="Ico">
-                                        </a>
+                                        <img class="action-button click-animation" src="{% static 'ico/main/' %}{{ view }}.svg" alt="Ico">
                                     {% endfor %}
                                 </div>
                                 <div class="action-group">
@@ -260,16 +258,26 @@
                     {% endif %}
 
                     <!-- Search panel -->
-                    {% if search %}
-                        <div class="grid-box margin-half margin-boundary" id="model-search">
-                            <input class="input-field search" type="search" name="name">
-                            <div class="button action-button click-animation">
-                                <img src="{% static 'ico/main/search.svg' %}" alt="Search">
+                    {% if filter %}
+                        <form action="get">
+
+                            <div class="grid-box margin-half margin-boundary" id="model-search">
+                                <input class="input-field search" type="search" name="object_name">
+                                <button class="click-animation" type="submit">
+                                    <img src="{% static 'ico/main/search.svg' %}" alt="Search">
+                                </button>
+                                <div class="button action-button click-animation" id="model-filter-button" >
+                                    <img src="{% static 'ico/main/filter.svg' %}" alt="Filter">
+                                </div>
                             </div>
-                            <div class="button action-button click-animation">
-                                <img src="{% static 'ico/main/filter.svg' %}" alt="Filter">
+
+                            <div id="model-filter" class="collapse">
+                                <div class="grid-box margin-half margin-boundary">
+                                    {{ filter.form.as_p }}
+                                </div>
                             </div>
-                        </div>
+
+                        </form>
                     {% endif %}
 
                     {% block content %}{% endblock content %}

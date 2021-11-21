@@ -16,7 +16,7 @@ Including another URLconf
 # Django Import:
 from django.utils.translation import gettext_lazy as _
 from django.conf.urls.i18n import i18n_patterns
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.contrib import admin
 import debug_toolbar
 

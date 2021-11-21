@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'rest_framework.authtoken',
     'rest_framework',
+    'django_filters',
     'django_celery_beat',
     'channels',
 

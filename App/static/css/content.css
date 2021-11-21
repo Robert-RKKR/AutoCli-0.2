@@ -80,9 +80,23 @@
         width: 100%;
     }
 
+    #model-search button {
+        padding: var(--box_padding_full);
+        padding-left: 20px;
+        padding-right: 20px;
+        border: none;
+        background: #efefef;
+    }
+
+    #model-search button:hover {
+        background: var(--color_strong_red);
+    }
+
     #model-search div {
-        padding-left: 30px;
-        padding-right: 30px;
+        padding: var(--box_padding_full);
+        padding-left: 20px;
+        padding-right: 20px;
+        border: none;
         background: #efefef;
     }
 
@@ -90,7 +104,25 @@
         background: var(--color_strong_red);
     }
 
-    
+
+        /*   -----   MODEL SEARCH FILTER   -----   */
+        #model-filter > div {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            padding: var(--box_padding_full_and_half);
+        }
+
+        #model-filter > div > input, label, select {
+            margin: var(--box_padding_half);
+        }
+        
+        #model-filter input {
+            background: var(--color_page_background);
+            border: none;
+            padding: var(--box_padding_half);
+        }
 
 
      /*   ---------------------------   */

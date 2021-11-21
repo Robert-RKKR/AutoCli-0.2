@@ -4,6 +4,54 @@
 
 {% block content %}
 
-    <p>Search</p>
+    <!-- Grid container for models -->
+    <div id="model-grid">
+        
+        {% for object in objects %}
+            <!-- Single model item -->
+            <div class="model-item">
+                <div class="model-subitem grid-box">
+
+                    <!-- Single model item header -->
+                    <div class="model-item-header">
+                        <img class="box-header-svg" src="/{{ object.get_ico_display }}" alt="switch">
+                        <div>
+                            <h3><a href="{{ main_path }}/one/{{ object.pk }}">{{ object.name }}</a></h3>
+                            <q>{% translate "Created" %}: {{ object.created }}</q></br>
+                            <q>{% translate "Updated" %}: {{ object.updated }}</q>
+                        </div>
+                    </div>
+
+                    <!-- Single model item body -->
+                    <div class="model-item-body">
+                        <table>
+                            <tr>
+                                <th>Hostname:</th>
+                                <td>192.158.1.1</td>
+                            </tr>
+                            <tr>
+                                <th>Device type:</th>
+                                <td>Cisco-IOS XE</td>
+                            </tr>
+                            <tr>
+                                <th>System version:</th>
+                                <td>17.1.2</td>
+                            </tr>
+                            <tr>
+                                <th>Platform:</th>
+                                <td>C9300</td>
+                            </tr>
+                            <tr>
+                                <th>Uptime:</th>
+                                <td>12d 1h 32m 23s</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
     
 {% endblock %}
