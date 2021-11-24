@@ -6,19 +6,6 @@ toggleButton.onclick = function () {
     activeElement.classList.toggle("toggled");
 };
 
-// FILTER CLOSE ACTION:
-var activeElement = document.getElementById("model-filter");
-var toggleButton = document.getElementById("model-filter-button");
-
-toggleButton.onclick = function () {
-
-    if(activeElement.classList.contains("collapse") === false) {
-        activeElement.classList.add("collapse");
-    } else {
-        activeElement.classList.remove("collapse");
-    }
-};
-
 // SIDEBAR SUB MENU ACTION:
 var toggleButtons = document.getElementsByClassName("collapse-menu-link");
 
@@ -53,3 +40,16 @@ for(let i=0; i<messages.length; i++) {
     })
 
 }
+
+// FILTER CLOSE ACTION:
+var activeElement = document.getElementById("model-filter");
+var toggleButton = document.getElementById("model-filter-button");
+
+toggleButton.onclick = function () {
+
+    if(activeElement.classList.contains("collapse") === false) {
+        activeElement.classList.add("collapse");
+    } else {
+        activeElement.classList.remove("collapse");
+    }
+};

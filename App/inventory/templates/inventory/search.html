@@ -27,23 +27,23 @@
                         <table>
                             <tr>
                                 <th>Hostname:</th>
-                                <td>192.158.1.1</td>
+                                <td>{{ object.hostname }}</td>
                             </tr>
                             <tr>
                                 <th>Device type:</th>
-                                <td>Cisco-IOS XE</td>
+                                <td>{{ object.get_device_type_display }}</td>
                             </tr>
                             <tr>
-                                <th>System version:</th>
-                                <td>17.1.2</td>
+                                <th>Credential:</th>
+                                <td>{{ object.credential }}</td>
                             </tr>
                             <tr>
-                                <th>Platform:</th>
-                                <td>C9300</td>
+                                <th>SSH port:</th>
+                                <td>{{ object.ssh_port }}</td>
                             </tr>
                             <tr>
-                                <th>Uptime:</th>
-                                <td>12d 1h 32m 23s</td>
+                                <th>HTTPS port:</th>
+                                <td>{{ object.https_port }}</td>
                             </tr>
                         </table>
                     </div>

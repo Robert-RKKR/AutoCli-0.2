@@ -248,8 +248,8 @@
                                 </div>
                                 <div class="action-group">
                                     {% for action in panel.actions %}
-                                        <a href="/{{ LANGUAGE_CODE }}/{{ panel.link.application }}/{{ panel.link.model }}/{{ action }}">
-                                            <img class="action-button click-animation" src="{% static 'ico/main/' %}{{ action }}.svg" alt="Ico">
+                                        <a href="/{{ LANGUAGE_CODE }}/{{ panel.link.application }}/{{ panel.link.model }}/{{ action.name }}/{{ action.object }}">
+                                            <img class="action-button click-animation" src="{% static 'ico/main/' %}{{ action.name }}.svg" alt="Ico">
                                         </a>
                                     {% endfor %}
                                 </div>

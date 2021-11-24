@@ -43,7 +43,7 @@
         /*   -----   MESSAGE ERROR, CRITICAL   -----   */
         .critical {
             background: var(--color_light_red);
-            border: var(--color_strong_red) solid 2px;
+            border: var(--color_strong_red) solid 1px;
             color: var(--color_strong_red);
         }
 
@@ -53,12 +53,23 @@
 
         /*   -----   MESSAGE INFORM   -----   */
         .inform {
-            background: var(--color_light_blue);
-            border: var(--color_strong_blue) solid 2px;
-            color: var(--color_strong_blue);
+            background: var(--color_light_green);
+            border: var(--color_strong_green) solid 1px;
+            color: var(--color_strong_green);
         }
 
         .inform .message-close {
+            fill: var(--color_strong_green);
+        }
+
+        /*   -----   MESSAGE INFORM   -----   */
+        .debug {
+            background: var(--color_light_blue);
+            border: var(--color_strong_blue) solid 1px;
+            color: var(--color_strong_blue);
+        }
+
+        .debug .message-close {
             fill: var(--color_strong_blue);
         }
 
