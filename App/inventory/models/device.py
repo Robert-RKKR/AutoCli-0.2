@@ -116,3 +116,34 @@ class Device(models.Model):
         app_label = 'inventory'
         verbose_name = _('Device')
         verbose_name_plural = _('Devices')
+
+
+class DeviceData(models.Model):
+
+    # Corelation witch device model:
+    device = models.ForeignKey(Device, on_delete=models.CASCADE, null=False, blank=False)
+    
+    # Creation data:
+    created = models.DateTimeField(auto_now_add=True)
+
+    # Basic device information:
+    hostname = models.CharField(max_length=64, blank=True, null=True)
+    system_version = models.CharField(max_length=64, blank=True, null=True)
+    domain_name = models.CharField(max_length=64, blank=True, null=True)
+    default_gateway = models.GenericIPAddressField(blank=True, null=True)
+    name_server_list = models.JSONField(blank=True, null=True)
+    ntp_server_list = models.JSONField(blank=True, null=True)
+    os_boot_files_list = models.JSONField(blank=True, null=True)
+    ios_users_list = models.JSONField(blank=True, null=True)
+
+    # SNMP protocol information:
+    snmp_server_community_list = models.JSONField(blank=True, null=True)
+    snmp_server_group_list = models.JSONField(blank=True, null=True)
+    snmp_server_user_list = models.JSONField(blank=True, null=True)
+
+    # STP protocol information:
+    spanning_tree_mode = models.CharField(max_length=64,blank=True,null=True)
+
+    # Statistics:
+    memory_stats = models.JSONField(blank=True, null=True)
+    cpu_stats = models.JSONField(blank=True, null=True)
