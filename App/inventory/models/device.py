@@ -114,3 +114,5 @@ class Device(models.Model):
     # Meta sub class:
     class Meta:
         app_label = 'inventory'
+        verbose_name = _('Device')
+        verbose_name_plural = _('Devices')

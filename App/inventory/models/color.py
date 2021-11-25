@@ -73,6 +73,8 @@ class Color(models.Model):
     # Meta sub class:
     class Meta:
         app_label = 'inventory'
+        verbose_name = _('Color')
+        verbose_name_plural = _('Colors')
 
 
 
@@ -88,8 +90,8 @@ class ColorDeviceRelation(models.Model):
     deleted = models.BooleanField(default=False)
 
     # Relations values:
-    device = models.ForeignKey(Device, on_delete=models.PROTECT)
-    color = models.ForeignKey(Color, on_delete=models.PROTECT)
+    device = models.ForeignKey(Device, on_delete=models.CASCADE)
+    color = models.ForeignKey(Color, on_delete=models.CASCADE)
 
     class Meta:
         unique_together = [['device', 'color']]
@@ -106,8 +108,8 @@ class ColorGroupRelation(models.Model):
     deleted = models.BooleanField(default=False)
 
     # Relations values:
-    group = models.ForeignKey(Group, on_delete=models.PROTECT)
-    color = models.ForeignKey(Color, on_delete=models.PROTECT)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    color = models.ForeignKey(Color, on_delete=models.CASCADE)
 
     class Meta:
         unique_together = [['group', 'color']]
@@ -124,8 +126,8 @@ class ColorCredentialRelation(models.Model):
     deleted = models.BooleanField(default=False)
 
     # Relations values:
-    credential = models.ForeignKey(Credential, on_delete=models.PROTECT)
-    color = models.ForeignKey(Color, on_delete=models.PROTECT)
+    credential = models.ForeignKey(Credential, on_delete=models.CASCADE)
+    color = models.ForeignKey(Color, on_delete=models.CASCADE)
 
     class Meta:
         unique_together = [['credential', 'color']]

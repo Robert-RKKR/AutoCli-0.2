@@ -204,10 +204,46 @@
 
     /*   ---------------------------   */
     /*   ----     OBJECT GRID     ----   */
+    #object-grid {
+        column-count: 1;
+        column-gap: 0;
+    }
+
+    .object-item {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .object-subitem {
+        display: flex;
+        flex-direction: column;
+        margin: var(--box_padding_half);
+    }
 
 
-        /*   -----   PAGE TOP   -----   */
+        /*   -----   OBJECT GRID HEADER   -----   */
+        .object-item-header {
+            background: var(--color_light_gray);
+            padding: var(--box_padding_half);
+        }
 
+
+        /*   -----   OBJECT GRID BODY   -----   */
+        .object-item-body {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .object-item-body table {
+
+        }
+
+        .object-item-body th, td {
+            font-size: 0.9em;
+            padding: 5px;
+        }
 
 
 

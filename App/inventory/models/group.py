@@ -46,6 +46,12 @@ class Group(models.Model):
             # Change deleted value to True, to inform that object is deleted:
             self.deleted = True
 
+    # Meta sub class:
+    class Meta:
+        app_label = 'inventory'
+        verbose_name = _('Group')
+        verbose_name_plural = _('Groups')
+
 
 # Relations models:
 class GroupDeviceRelation(models.Model):

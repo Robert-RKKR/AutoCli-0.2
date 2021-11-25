@@ -13,29 +13,25 @@ from ..filters import DeviceFilter, DeviceNameFilter
 
 
 # Device panel:
-main_path = '/inventory/device'
-panel = {
-    'link': {
+data = {
+    'panel': {
         'application': 'inventory',
         'model': 'device',
     },
-    'views': ['grid', 'list'],
 }
+
 
 
 # Inventory views:
 def add(request):
 
     # Collect basic information:
-    panel['actions'] = [{'name': 'add'}]
-    data = {
-        'url': request.path[3:],
-        'page_name': _('Add new device'),
-        'messages': [],
-        'panel': panel,
-    }
+    data['url'] = request.path[3:]
+    data['messages'] = []
+    data['filter'] = None
+    data['page_name'] = _('Add new device')
+    data['panel']['actions'] = [{'name': 'add'}]
 
-    # Show form if GET and form output when POST:
     if request.method == 'POST':
         form = DeviceAddOneForm(request.POST)
         data['form'] = form
@@ -58,50 +54,37 @@ def add(request):
         return render(request, 'add_form.html', data)
 
 def one(request, pk):
-    # Collect basic information:
-    data = {
-        'url': request.path[3:],
-        'messages': [],
-        'panel': panel,
-    }
-
+    # Collect object by PK number:
     device = get_object_or_404(Device, pk=pk)
-    panel['actions'] = [
-        {
-            'name': 'add',
-        },
-        {
-            'name': 'edit',
-            'object': pk,},
-        {
-            'name': 'delete',
-            'object': pk,},
-    ]
+
+    # Collect basic information:
+    data['url'] = request.path[3:]
+    data['filter'] = None
+    data['messages'] = []
     data['page_name'] = device.name
     data['object'] = device
+    data['panel']['actions'] = [
+        {'name': 'add'},
+        {'name': 'edit',
+        'object': pk,},
+        {'name': 'delete',
+        'object': pk,}
+    ]
 
     return render(request, 'inventory/one.html', data)
 
 def edit(request, pk):
     # Collect basic information:
-
-    panel['actions'] = [
-        {
-            'name': 'add',
-        },
-        {
-            'name': 'edit',
-            'object': pk,},
-        {
-            'name': 'delete',
-            'object': pk,},
+    data['url'] = request.path[3:]
+    data['filter'] = None
+    data['page_name'] = _('Edit device')
+    data['panel']['actions'] = [
+        {'name': 'add'},
+        {'name': 'edit',
+        'object': pk,},
+        {'name': 'delete',
+        'object': pk,}
     ]
-    data = {
-        'url': request.path[3:],
-        'page_name': _('Edit device'),
-        'messages': [],
-        'panel': panel,
-    }
 
     # Collect devices:
     device = get_object_or_404(Device, pk=pk)
@@ -131,17 +114,14 @@ def edit(request, pk):
 def search(request):
 
     # Collect basic information:
-    panel['actions'] = [{'name': 'add'}]
-    data = {
-        'url': request.path[3:],
-        'page_name': _('Devices search'),
-        'messages': [],
-        'panel': panel,
-        'main_path': main_path,
-        'display': [
-            'hostname', 'device_type', 'credential', 'ssh_port', 'https_port', 
-        ]
-    }
+    data['url'] = request.path[3:]
+    data['messages'] = []
+    data['filter'] = None
+    data['page_name'] = _('Edit device')
+    data['panel']['actions'] = [{'name': 'add'}]
+    data['display'] = [
+        'hostname', 'device_type', 'credential', 'ssh_port', 'https_port',
+    ]
 
     # Collect name:
     object_name = request.GET.get('object_name')
@@ -164,4 +144,4 @@ def search(request):
         data['objects'] = devices_filter.qs
         data['filter'] = devices_filter
 
-    return render(request, 'inventory/search.html', data)
+    return render(request, 'search.html', data)

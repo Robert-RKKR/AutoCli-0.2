@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load static %}
+{% load tags %}
 
 {% block content %}
 
@@ -16,7 +17,7 @@
                     <div class="model-item-header">
                         <img class="box-header-svg" src="/{{ object.get_ico_display }}" alt="switch">
                         <div>
-                            <h3><a href="{{ main_path }}/one/{{ object.pk }}">{{ object.name }}</a></h3>
+                            <h3><a href="/{{ LANGUAGE_CODE }}/{{ panel.application }}/{{ panel.model }}/one/{{ object.pk }}">{{ object.name }}</a></h3>
                             <q>{% translate "Created" %}: {{ object.created }}</q></br>
                             <q>{% translate "Updated" %}: {{ object.updated }}</q>
                         </div>
@@ -25,26 +26,12 @@
                     <!-- Single model item body -->
                     <div class="model-item-body">
                         <table>
-                            <tr>
-                                <th>Hostname:</th>
-                                <td>{{ object.hostname }}</td>
-                            </tr>
-                            <tr>
-                                <th>Device type:</th>
-                                <td>{{ object.get_device_type_display }}</td>
-                            </tr>
-                            <tr>
-                                <th>Credential:</th>
-                                <td>{{ object.credential }}</td>
-                            </tr>
-                            <tr>
-                                <th>SSH port:</th>
-                                <td>{{ object.ssh_port }}</td>
-                            </tr>
-                            <tr>
-                                <th>HTTPS port:</th>
-                                <td>{{ object.https_port }}</td>
-                            </tr>
+                            {% for row in display %}
+                                <tr>
+                                    <th>{{ row|title }}:</th>
+                                    <td>{{ object|key_value:row }}</td>
+                                </tr>
+                            {% endfor %}
                         </table>
                     </div>
 
