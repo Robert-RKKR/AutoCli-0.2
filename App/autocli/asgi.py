@@ -18,12 +18,12 @@ from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
 
 # Application Import:
-#from inventory.routing import ws_urlpatterns
+from inventory.routing import ws_urlpatterns
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'autocli.settings')
 
-application = get_asgi_application()
-"""application = ProtocolTypeRouter({
+#application = get_asgi_application()
+application = ProtocolTypeRouter({
     'http': get_asgi_application(),
     'websocket': AuthMiddlewareStack(URLRouter(ws_urlpatterns)),
-})"""
+})

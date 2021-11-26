@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Applications Import:
 from .automation_policy import AutomationPolicy
+from inventory.models.device import Device
 
 
 # Model code:
@@ -17,8 +18,9 @@ class TaskManager(models.Model):
     status = models.BooleanField(default=False)
     deleted = models.BooleanField(default=False)
 
-    # Automation policy data:
+    # Automation data:
     automation_policy = models.ForeignKey(AutomationPolicy, on_delete=models.PROTECT)
+    device = models.ForeignKey(Device, on_delete=models.CASCADE)
 
     # Task data:
     input_data = models.JSONField(null=True, blank=True)

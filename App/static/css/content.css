@@ -162,6 +162,28 @@
             flex-direction: column;
         }
 
+
+            /*   -----   ITEM BALL   -----   */
+            .ball-box {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .ball {
+                border-radius: 50%;
+                width: var(--box_padding_full);
+                height: var(--box_padding_full);
+                margin: 0px 10px 15px 0px;
+            }
+        
+            .ball-active {
+                background: var(--color_strong_green);
+            }
+        
+            .ball-inactive {
+                background: var(--color_strong_red);
+            }
+
             /*   -----   ITEM HEADER   -----   */
             .model-item-header {
                 display: flex;

@@ -10,7 +10,7 @@ from ..models.device import Device
 
 # Application Filters Import:
 from ..filters import DeviceFilter, DeviceNameFilter
-
+from ..tasks import single_device_check
 
 # Device panel:
 data = {
@@ -123,6 +123,8 @@ def search(request):
         'hostname', 'device_type', 'credential', 'ssh_port', 'https_port',
     ]
 
+    #single_device_check.delay(45)
+
     # Collect name:
     object_name = request.GET.get('object_name')
     
@@ -145,3 +147,11 @@ def search(request):
         data['filter'] = devices_filter
 
     return render(request, 'search.html', data)
+
+
+def test(request):
+
+    output = single_device_check.delay(45)
+    data['output'] = output
+
+    return render(request, 'inventory/test.html', data)

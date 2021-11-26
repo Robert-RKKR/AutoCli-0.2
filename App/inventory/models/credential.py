@@ -18,10 +18,22 @@ class Credential(models.Model):
     deleted = models.BooleanField(default=False)
 
     # Main model values:
-    name = models.CharField(max_length=16, blank=False, unique=True)
-    username = models.CharField(max_length=64, blank=False)
-    password = models.CharField(max_length=64, null=True)
-    description = models.CharField(max_length=256, default="Credentials description.")
+    name = models.CharField(
+        verbose_name=_('Credential name'),
+        max_length=16, blank=False, unique=True
+    )
+    username = models.CharField(
+        verbose_name=_('User name'),
+        max_length=64, blank=False
+    )
+    password = models.CharField(
+        verbose_name=_('User password'),
+        max_length=64, null=True
+    )
+    description = models.CharField(
+        verbose_name=_('Description'),
+        max_length=256, default="Credentials description."
+    )
 
     # Model representation:
     def __str__(self) -> str:
