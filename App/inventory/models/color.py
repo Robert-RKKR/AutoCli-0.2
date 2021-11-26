@@ -29,7 +29,7 @@ class Color(models.Model):
     deleted = models.BooleanField(default=False)
 
     # Main model values:
-    name = models.CharField(max_length=32, blank=False, unique=True)
+    name = models.CharField(max_length=16, blank=False, unique=True)
     value = models.CharField(
         unique=True,
         max_length=7,
