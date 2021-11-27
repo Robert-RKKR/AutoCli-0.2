@@ -3,18 +3,9 @@ from django_filters import FilterSet
 
 # Application Import:
 from .models.device import Device
+from .models.color import Color
 
 
-# Only name Filter Class:
-class DeviceNameFilter(FilterSet):
-
-    class Meta:
-        model = Device
-        fields = {
-            'name': ['contains'],
-        }
-
-# Filter classes:
 class DeviceFilter(FilterSet):
 
     class Meta:
@@ -22,7 +13,21 @@ class DeviceFilter(FilterSet):
         fields = {
             'status': ['exact'],
             'hostname': ['exact', 'contains'],
+            'credential': ['exact'],
             'device_type': ['exact'],
             'ssh_status': ['exact'],
             'https_port': ['exact'],
+        }
+
+
+class ColorFilter(FilterSet):
+
+    class Meta:
+        model = Color
+        fields = {
+            'value': ['contains'],
+            'description': ['contains'],
+            'devices': ['contains'],
+            'groups': ['contains'],
+            'credentials': ['contains'],
         }
