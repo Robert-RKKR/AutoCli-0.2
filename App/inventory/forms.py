@@ -11,5 +11,5 @@ class DeviceAddOneForm(ModelForm):
     class Meta:
         model = Device
         fields = [
-            'status','name', 'hostname', 'device_type', 'credential', 'ico', 'ssh_port', 'https_port', 'description',
+            'status', 'name', 'hostname', 'device_type', 'credential', 'ico', 'ssh_port', 'https_port', 'description',
         ]

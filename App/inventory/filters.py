@@ -3,6 +3,7 @@ from django_filters import FilterSet
 
 # Application Import:
 from .models.device import Device
+from .models.color import Color
 
 
 # Only name Filter Class:
@@ -14,7 +15,6 @@ class DeviceNameFilter(FilterSet):
             'name': ['contains'],
         }
 
-# Filter classes:
 class DeviceFilter(FilterSet):
 
     class Meta:

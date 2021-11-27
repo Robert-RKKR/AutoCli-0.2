@@ -10,7 +10,7 @@ from ..models.device import Device
 
 # Application Filters Import:
 from ..filters import DeviceFilter, DeviceNameFilter
-from ..tasks import single_device_check
+from ..tasks import single_device_check, single_device_collect
 
 # Device panel:
 data = {
@@ -71,6 +71,10 @@ def one(request, pk):
         'object': pk,}
     ]
 
+    #output = single_device_check.delay(device.pk)
+    output = single_device_collect.delay(device.pk)
+    data['output'] = output
+
     return render(request, 'inventory/one.html', data)
 
 def edit(request, pk):
@@ -114,7 +118,7 @@ def edit(request, pk):
 def search(request):
 
     # Collect basic information:
-    data['url'] = request.path[3:]
+    data['url'] = '/inventory/device/search/get?object_name=&status=1&name=&name__contains=&hostname=&hostname__contains=&device_type=&ssh_status=unknown&https_port='
     data['messages'] = []
     data['filter'] = None
     data['page_name'] = _('Edit device')
@@ -151,7 +155,7 @@ def search(request):
 
 def test(request):
 
-    output = single_device_check.delay(45)
+    output = single_device_check(45)
     data['output'] = output
 
     return render(request, 'inventory/test.html', data)
