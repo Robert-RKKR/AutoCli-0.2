@@ -1,3 +1,8 @@
+# Django Import:
 from django.contrib import admin
 
-# Register your models here.
+# Application Import:
+from .models import *
+
+# Register Application models in Django Admin:
+admin.site.register(Administrator)

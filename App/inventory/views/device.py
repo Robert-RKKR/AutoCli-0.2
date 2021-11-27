@@ -1,15 +1,17 @@
 # Django Import:
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
+from django.views.generic import CreateView
 
 # Forms Import:
-from ..forms import DeviceAddOneForm
+from ..forms import DeviceForm
 
 # Application Import:
 from ..models.device import Device
 
 # Application Filters Import:
-from ..filters import DeviceFilter, DeviceNameFilter
+from ..filters import DeviceFilter
 from ..tasks import single_device_check, single_device_collect
 
 # Device panel:
@@ -33,7 +35,7 @@ def add(request):
     data['panel']['actions'] = [{'name': 'add'}]
 
     if request.method == 'POST':
-        form = DeviceAddOneForm(request.POST)
+        form = DeviceForm(request.POST)
         data['form'] = form
 
         # Try to add a nwe object if form is valid:
@@ -49,7 +51,7 @@ def add(request):
     
     elif request.method == 'GET':
      
-        data['form'] = DeviceAddOneForm()
+        data['form'] = DeviceForm()
 
         return render(request, 'add_form.html', data)
 
@@ -95,7 +97,7 @@ def edit(request, pk):
 
     # Show form if GET and form output when POST:
     if request.method == 'POST':
-        form = DeviceAddOneForm(request.POST, instance=device)
+        form = DeviceForm(request.POST, instance=device)
         data['form'] = form
 
         # Try to add a nwe object if form is valid:
@@ -111,7 +113,7 @@ def edit(request, pk):
     
     elif request.method == 'GET':
      
-        data['form'] = DeviceAddOneForm(instance=device)
+        data['form'] = DeviceForm(instance=device)
 
     return render(request, 'add_form.html', data)
 
@@ -159,3 +161,9 @@ def test(request):
     data['output'] = output
 
     return render(request, 'inventory/test.html', data)
+
+
+class TestView(CreateView):
+    form_class = DeviceForm
+    success_url = reverse_lazy('home:home')
+    template_name = 'add_form.html'

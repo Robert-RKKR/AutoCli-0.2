@@ -6,7 +6,7 @@ from .models.device import Device
 
 
 # Forms:
-class DeviceAddOneForm(ModelForm):
+class DeviceForm(ModelForm):
 
     class Meta:
         model = Device

@@ -6,15 +6,6 @@ from .models.device import Device
 from .models.color import Color
 
 
-# Only name Filter Class:
-class DeviceNameFilter(FilterSet):
-
-    class Meta:
-        model = Device
-        fields = {
-            'name': ['contains'],
-        }
-
 class DeviceFilter(FilterSet):
 
     class Meta:
@@ -22,6 +13,7 @@ class DeviceFilter(FilterSet):
         fields = {
             'status': ['exact'],
             'hostname': ['exact', 'contains'],
+            'credential': ['exact'],
             'device_type': ['exact'],
             'ssh_status': ['exact'],
             'https_port': ['exact'],
