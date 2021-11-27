@@ -18,3 +18,16 @@ class DeviceFilter(FilterSet):
             'ssh_status': ['exact'],
             'https_port': ['exact'],
         }
+
+
+class ColorFilter(FilterSet):
+
+    class Meta:
+        model = Color
+        fields = {
+            'value': ['contains'],
+            'description': ['contains'],
+            'devices': ['contains'],
+            'groups': ['contains'],
+            'credentials': ['contains'],
+        }

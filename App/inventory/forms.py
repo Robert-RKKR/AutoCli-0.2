@@ -13,3 +13,12 @@ class DeviceForm(ModelForm):
         fields = [
             'status', 'name', 'hostname', 'device_type', 'credential', 'ico', 'ssh_port', 'https_port', 'description',
         ]
+
+
+class ColorForm(ModelForm):
+
+    class Meta:
+        model = Device
+        fields = [
+            'name', 'value', 'description', 'devices', 'groups', 'credentials',
+        ]
