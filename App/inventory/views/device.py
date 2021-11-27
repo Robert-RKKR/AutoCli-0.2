@@ -72,7 +72,7 @@ def one(request, pk):
     ]
 
     #output = single_device_check.delay(device.pk)
-    output = single_device_collect.delay(device.pk)
+    output = single_device_check(device.pk)
     data['output'] = output
 
     return render(request, 'inventory/one.html', data)

@@ -16,8 +16,8 @@ from .models.device import *
 # Channels variable:
 channel_layer = get_channel_layer()
 
-@shared_task(bind=True, track_started=True)
-def single_device_collect(self, device_pk: int) -> bool:
+#@shared_task(bind=True, track_started=True)
+def single_device_collect(device_pk: int) -> bool:
     """
         Collect data from device.
     """
@@ -31,23 +31,23 @@ def single_device_collect(self, device_pk: int) -> bool:
         device = get_object_or_404(Device, pk=device_pk)
 
         # Raport start of task:
-        self.update_state(state=f'Collecting data about device: {device.hostname}.')
+        #self.update_state(state=f'Collecting data about device: {device.hostname}.')
 
         # Collect data from device:
-        ssh_connection = NetCon(self.device)
+        ssh_connection = NetCon(device)
         ssh_connection.send_command('show interfaces')
 
         # Raport end of task:
-        self.update_state(state=f'Data fom device {device.hostname} was collected.')
+        #self.update_state(state=f'Data fom device {device.hostname} was collected.')
 
     else: # If device variable is not a intiger, raise type error:
         raise TypeError('device variable can only be a intiger.')
 
-    async_to_sync(channel_layer.group_send)('collect', {'type': 'send_collect', 'text': 'The task was completed'})
+    #async_to_sync(channel_layer.group_send)('collect', {'type': 'send_collect', 'text': 'The task was completed'})
 
 
-@shared_task(bind=True, track_started=True)
-def single_device_check(self, device_pk: int) -> bool:
+#@shared_task(bind=True, track_started=True)
+def single_device_check(device_pk: int) -> bool:
     """
         Check if device is available by using HTTPS request at the beginning,
         and an SSH connection if the HTTPS request fails.
@@ -63,7 +63,8 @@ def single_device_check(self, device_pk: int) -> bool:
             
         # Connect to device using HTTPS request:
         https_connection = RestCon(device)
-        https_connection.get('restconf')
+        output = https_connection.get('restconf')
+        print('--->', output)
 
         # Check HTTPS request output and change device status:
         if https_connection.status is True:
@@ -90,8 +91,8 @@ def single_device_check(self, device_pk: int) -> bool:
     # Return single device check status:
     return status
 
-@shared_task(bind=True, track_started=True)
-def active_devices_check(self) -> bool:
+#@shared_task(bind=True, track_started=True)
+def active_devices_check() -> bool:
     """
         Check all active devices if the are available by using HTTPS request at the beginning,
         and an SSH connection if the HTTPS request fails.
