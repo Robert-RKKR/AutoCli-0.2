@@ -5,7 +5,7 @@ from django.views.generic import View
 from prompt_toolkit import application
 
 # Application Import:
-from .autocli_view_models import AddViewModel
+from .autocli_view_models import *
 from ..models.color import Color
 
 # Application Filters Import:
@@ -14,17 +14,38 @@ from ..filters import ColorFilter
 # Application Forms Import:
 from ..forms import ColorForm
 
-# Model web data:
-data_view = {
-    'application': 'inventory',
-    'model': 'color',
-    'panel': '',
-}
+
+class ColorOneView(OneViewModel):
+
+    model = Color
+    panel = ['add', 'update', 'delete']
+    display = ['value', 'description', 'devices', 'groups', 'credentials']
+
 
 class ColorAddView(AddViewModel):
 
-    template = 'add_object.html'
-    application = 'inventory'
     model = Color
     form_class = ColorForm
+    panel = ['add']
 
+
+class ColorDeleteView(DeleteViewModel):
+
+    model = Color
+    form_class = ColorForm
+    panel = ['add']
+
+
+class ColorUpdateView(UpdateViewModel):
+
+    model = Color
+    form_class = ColorForm
+    panel = ['add', 'delete']
+
+
+class ColorSearchView(SearchViewModel):
+
+    model = Color
+    filter = ColorFilter
+    panel = ['add']
+    display = ['value']

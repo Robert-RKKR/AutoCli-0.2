@@ -1,5 +1,7 @@
 {% load i18n %}
 {% load static %}
+{% load tags %}
+
 <!DOCTYPE html>
 
 {% get_current_language as LANGUAGE_CODE %}
@@ -67,7 +69,7 @@
 
                             <!-- Sub-menu item -->
                             <li class="submenu-item">
-                                <a href="/{{ LANGUAGE_CODE }}/inventory/device/search/get?object_name=&status=1&name=&name__contains=&hostname=&hostname__contains=&device_type=&ssh_status=unknown&https_port=" class="submenu-link click-animation">
+                                <a href="{% url 'device_search' %}?object_name=&status=1&name=&name__contains=&hostname=&hostname__contains=&device_type=&ssh_status=unknown&https_port=" class="submenu-link click-animation">
                                     <svg class="menu-svg" viewBox="0 -192 469.33333 469" xmlns="http://www.w3.org/2000/svg"><path d="m437.332031.167969h-405.332031c-17.664062 0-32 14.335937-32 32v21.332031c0 17.664062 14.335938 32 32 32h405.332031c17.664063 0 32-14.335938 32-32v-21.332031c0-17.664063-14.335937-32-32-32zm0 0"/></svg>
                                     <span>{% translate "Devices" %}</span>
                                 </a>
@@ -91,7 +93,7 @@
 
                             <!-- Sub-menu item -->
                             <li class="submenu-item">
-                                <a href="#" class="submenu-link click-animation">
+                                <a href="{% url 'color_search' %}?object_name=&status=&name=&name__contains=&hostname=&hostname__contains=&device_type=&ssh_status=unknown&https_port=" class="submenu-link click-animation">
                                     <svg class="menu-svg" viewBox="0 -192 469.33333 469" xmlns="http://www.w3.org/2000/svg"><path d="m437.332031.167969h-405.332031c-17.664062 0-32 14.335937-32 32v21.332031c0 17.664062 14.335938 32 32 32h405.332031c17.664063 0 32-14.335938 32-32v-21.332031c0-17.664063-14.335937-32-32-32zm0 0"/></svg>
                                     <span>{% translate "Colors" %}</span>
                                 </a>
@@ -165,15 +167,16 @@
 
             <!-- Main page language panel -->
             <div id="language">
-
-                {% get_current_language as LANGUAGE_CODE %}
-                {% get_available_languages as LANGUAGES %}
-                {% get_language_info_list for LANGUAGES as languages %}
-                {% for lang in languages %}
-                <a href="/{{ lang.code }}{{ url }}" class="click-animation">
-                    <img class="menu-svg" src="{% static 'ico/flags/' %}{{ lang.code }}.svg" alt="{{ lang.code }}">
-                </a>
-                {% endfor %}
+                {% if user.is_authenticated %}
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for lang in languages %}
+                    <a href="/{{ lang.code }}{{ request|language_url }}" class="click-animation">
+                        <img class="menu-svg" src="{% static 'ico/flags/' %}{{ lang.code }}.svg" alt="{{ lang.code }}">
+                    </a>
+                    {% endfor %}
+                {% endif %}
             </div>
 
         </div>
@@ -225,7 +228,7 @@
                     <!-- Message box -->
                     {% if messages %}
                         {% for message in messages %}
-                            <div class="message inform">
+                            <div class="message {{ message.message_ico }}">
                                 <div class="message-text">
                                     <img class="message-ico" src="{% static 'ico/message/' %}{{ message.message_ico }}.svg" alt="X">
                                     <span><strong>{{ message.message_type }}:</strong> {{ message.message_text }}</span>
@@ -246,9 +249,13 @@
                                     <img class="action-button click-animation" src="{% static 'ico/main/list.svg' %}" alt="Ico">
                                 </div>
                                 <div class="action-group">
-                                    {% for action in panel.actions %}
-                                        <a href="/{{ LANGUAGE_CODE }}/{{ panel.application }}/{{ panel.model }}/{{ action.name }}/{{ action.object }}">
-                                            <img class="action-button click-animation" src="{% static 'ico/main/' %}{{ action.name }}.svg" alt="Ico">
+                                    {% for action in panel %}
+                                        {% if action == 'update' or action == 'delete' %}
+                                            <a href="{% url action|create_url:model_view_url pk=object_pk %}">
+                                        {% else %}
+                                            <a href="{% url action|create_url:model_view_url %}">
+                                        {% endif %}
+                                            <img class="action-button click-animation" src="{% static 'ico/main/' %}{{ action }}.svg" alt="Ico">
                                         </a>
                                     {% endfor %}
                                 </div>

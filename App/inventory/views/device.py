@@ -1,4 +1,60 @@
-# Django Import:
+# Django Imports:
+from django.shortcuts import render, get_object_or_404
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import View
+from prompt_toolkit import application
+
+# Application Import:
+from .autocli_view_models import *
+from ..models.color import Device
+
+# Application Filters Import:
+from ..filters import DeviceFilter
+
+# Application Forms Import:
+from ..forms import DeviceForm
+
+
+class DeviceOneView(OneViewModel):
+
+    model = Device
+    panel = ['add', 'update', 'delete']
+    display = [
+        'hostname', 'device_type', 'credential', 'secret', 'token', 'certificate', 'ssh_port', 'https_port'
+    ]
+
+
+class DeviceAddView(AddViewModel):
+
+    model = Device
+    form_class = DeviceForm
+    panel = ['add']
+
+
+class DeviceDeleteView(DeleteViewModel):
+
+    model = Device
+    form_class = DeviceForm
+    panel = ['add']
+
+
+class DeviceUpdateView(UpdateViewModel):
+
+    model = Device
+    form_class = DeviceForm
+    panel = ['add', 'delete']
+
+
+class DeviceSearchView(SearchViewModel):
+
+    model = Device
+    filter = DeviceFilter
+    panel = ['add']
+    display = ['hostname', 'device_type', 'credential', 'ssh_port', 'https_port']
+
+
+
+"""# Django Import:
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -8,6 +64,7 @@ from django.views.generic import CreateView
 from ..forms import DeviceForm
 
 # Application Import:
+from .autocli_view_models import *
 from ..models.device import Device
 
 # Application Filters Import:
@@ -118,6 +175,14 @@ def edit(request, pk):
 
     return render(request, 'add_form.html', data)
 
+class DeviceSearchView(SearchViewModel):
+
+    model = Device
+    filter = DeviceFilter
+    panel = ['add']
+    display = ['hostname', 'device_type', 'credential', 'ssh_port', 'https_port']
+
+
 def search(request):
 
     # Collect basic information:
@@ -125,7 +190,7 @@ def search(request):
     data['messages'] = []
     data['filter'] = None
     data['page_name'] = _('Edit device')
-    data['panel']['actions'] = [{'name': 'add'}]
+    data['panel'] = ['add']
     data['display'] = [
         'hostname', 'device_type', 'credential', 'ssh_port', 'https_port',
     ]
@@ -167,4 +232,4 @@ def test(request):
 class TestView(CreateView):
     form_class = DeviceForm
     success_url = reverse_lazy('home:home')
-    template_name = 'add_form.html'
+    template_name = 'add_form.html'"""

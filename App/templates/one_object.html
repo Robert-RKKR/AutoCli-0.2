@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load tags %}
+
+{% block content %}
+
+    <!-- Grid container for object items -->
+    <div id="object-grid">
+                            
+        <!-- Single object item -->
+        <div class="object-item">
+            <div class="object-subitem grid-box">
+
+                <!-- Single model item header -->
+                <div class="object-item-header ">
+                    <h4>{% translate "Basic information" %}</h4>
+                </div>
+
+                <!-- Single model item body -->
+                <div class="object-item-body">
+                    <table>
+                        {% for row in display %}
+                            <tr>
+                                <th>{{ row|title }}:</th>
+                                <td>{{ object|key_value:row }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    
+{% endblock %}

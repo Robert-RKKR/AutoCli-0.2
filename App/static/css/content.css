@@ -41,13 +41,13 @@
 
         
         /*   -----   MESSAGE ERROR, CRITICAL   -----   */
-        .critical {
+        .error {
             background: var(--color_light_red);
             border: var(--color_strong_red) solid 1px;
             color: var(--color_strong_red);
         }
 
-        .critical .message-close {
+        .error .message-close {
             fill: var(--color_strong_red);
         }
 
@@ -256,10 +256,6 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
-        }
-
-        .object-item-body table {
-
         }
 
         .object-item-body th, td {

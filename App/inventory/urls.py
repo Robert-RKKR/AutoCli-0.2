@@ -4,11 +4,17 @@ from .views.device import *
 from .views.color import *
 
 urlpatterns = [
-    re_path('device/test/', test),
-    re_path('device/add/', add),
-    path('device/edit/<int:pk>', edit),
-    path('device/one/<int:pk>', one),
-    re_path(r'^device/search/get$', search),
+    # ------------------ DEVICE ------------------ #
+    re_path(r'^device/search/get?$', DeviceSearchView.as_view(), name='device_search'),
+    path('device/add/', DeviceAddView.as_view(), name='device_add'),
+    path('device/one/<int:pk>', DeviceOneView.as_view(), name='device_one'),
+    path('device/update/<int:pk>', DeviceUpdateView.as_view(), name='device_update'),
+    path('device/delete/<int:pk>', DeviceDeleteView.as_view(), name='device_delete'),
 
-    path('color/add', ColorAddView.as_view()),
+    # ------------------ COLOR ------------------ #
+    re_path(r'^color/search/get?$', ColorSearchView.as_view(), name='color_search'),
+    path('color/add', ColorAddView.as_view(), name='color_add'),
+    path('color/one/<int:pk>', ColorOneView.as_view(), name='color_one'),
+    path('color/update/<int:pk>', ColorUpdateView.as_view(), name='color_update'),
+    path('color/delete/<int:pk>', ColorDeleteView.as_view(), name='color_delete'),
 ]

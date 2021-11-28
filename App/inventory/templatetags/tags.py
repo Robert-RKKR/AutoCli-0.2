@@ -16,3 +16,11 @@ def verbose_name_plural(template_object):
 @register.filter
 def key_value(template_object, key):
     return getattr(template_object, key)
+
+@register.filter
+def language_url(request):
+    return request.path[3:]
+
+@register.filter
+def create_url(action, text):
+    return text + '_' + action
