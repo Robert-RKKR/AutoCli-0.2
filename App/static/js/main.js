@@ -1,9 +1,9 @@
 // SIDEBAR CLOSE ACTION:
-var activeElement = document.getElementById("page-left");
-var toggleButton = document.getElementById("sidebar-close");
+var closeActiveElement = document.getElementById("page-left");
+var closeToggleButton = document.getElementById("sidebar-close");
 
-toggleButton.onclick = function () {
-    activeElement.classList.toggle("toggled");
+closeToggleButton.onclick = function () {
+    closeActiveElement.classList.toggle("toggled");
 };
 
 // SIDEBAR SUB MENU ACTION:
