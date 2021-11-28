@@ -69,7 +69,7 @@
 
                             <!-- Sub-menu item -->
                             <li class="submenu-item">
-                                <a href="{% url 'device_search' %}?object_name=&status=1&name=&name__contains=&hostname=&hostname__contains=&device_type=&ssh_status=unknown&https_port=" class="submenu-link click-animation">
+                                <a href="{% url 'device_search' %}?status=1" class="submenu-link click-animation">
                                     <svg class="menu-svg" viewBox="0 -192 469.33333 469" xmlns="http://www.w3.org/2000/svg"><path d="m437.332031.167969h-405.332031c-17.664062 0-32 14.335937-32 32v21.332031c0 17.664062 14.335938 32 32 32h405.332031c17.664063 0 32-14.335938 32-32v-21.332031c0-17.664063-14.335937-32-32-32zm0 0"/></svg>
                                     <span>{% translate "Devices" %}</span>
                                 </a>
@@ -77,7 +77,7 @@
 
                             <!-- Sub-menu item -->
                             <li class="submenu-item">
-                                <a href="#" class="submenu-link click-animation">
+                                <a href="{% url 'credential_search' %}?object_name=" class="submenu-link click-animation">
                                     <svg class="menu-svg" viewBox="0 -192 469.33333 469" xmlns="http://www.w3.org/2000/svg"><path d="m437.332031.167969h-405.332031c-17.664062 0-32 14.335937-32 32v21.332031c0 17.664062 14.335938 32 32 32h405.332031c17.664063 0 32-14.335938 32-32v-21.332031c0-17.664063-14.335937-32-32-32zm0 0"/></svg>
                                     <span>{% translate "Credentials" %}</span>
                                 </a>
@@ -85,7 +85,7 @@
 
                             <!-- Sub-menu item -->
                             <li class="submenu-item">
-                                <a href="#" class="submenu-link click-animation">
+                                <a href="{% url 'group_search' %}?object_name=" class="submenu-link click-animation">
                                     <svg class="menu-svg" viewBox="0 -192 469.33333 469" xmlns="http://www.w3.org/2000/svg"><path d="m437.332031.167969h-405.332031c-17.664062 0-32 14.335937-32 32v21.332031c0 17.664062 14.335938 32 32 32h405.332031c17.664063 0 32-14.335938 32-32v-21.332031c0-17.664063-14.335937-32-32-32zm0 0"/></svg>
                                     <span>{% translate "Groups" %}</span>
                                 </a>
@@ -93,7 +93,7 @@
 
                             <!-- Sub-menu item -->
                             <li class="submenu-item">
-                                <a href="{% url 'color_search' %}?object_name=&status=&name=&name__contains=&hostname=&hostname__contains=&device_type=&ssh_status=unknown&https_port=" class="submenu-link click-animation">
+                                <a href="{% url 'color_search' %}?object_name=" class="submenu-link click-animation">
                                     <svg class="menu-svg" viewBox="0 -192 469.33333 469" xmlns="http://www.w3.org/2000/svg"><path d="m437.332031.167969h-405.332031c-17.664062 0-32 14.335937-32 32v21.332031c0 17.664062 14.335938 32 32 32h405.332031c17.664063 0 32-14.335938 32-32v-21.332031c0-17.664063-14.335937-32-32-32zm0 0"/></svg>
                                     <span>{% translate "Colors" %}</span>
                                 </a>

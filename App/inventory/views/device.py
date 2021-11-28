@@ -1,12 +1,6 @@
-# Django Imports:
-from django.shortcuts import render, get_object_or_404
-from django.utils.translation import gettext_lazy as _
-from django.views.generic import View
-from prompt_toolkit import application
-
 # Application Import:
 from .autocli_view_models import *
-from ..models.color import Device
+from ..models.device import Device
 
 # Application Filters Import:
 from ..filters import DeviceFilter

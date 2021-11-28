@@ -4,6 +4,8 @@ from django_filters import FilterSet
 # Application Import:
 from .models.device import Device
 from .models.color import Color
+from .models.color import Credential
+from .models.color import Group
 
 
 class DeviceFilter(FilterSet):
@@ -30,4 +32,25 @@ class ColorFilter(FilterSet):
             'devices': ['contains'],
             'groups': ['contains'],
             'credentials': ['contains'],
+        }
+
+
+
+class CredentialFilter(FilterSet):
+
+    class Meta:
+        model = Credential
+        fields = {
+            'username': ['exact'],
+            'description': ['contains'],
+        }
+
+
+class GroupFilter(FilterSet):
+
+    class Meta:
+        model = Group
+        fields = {
+            'description': ['contains'],
+            'devices': ['contains'],
         }

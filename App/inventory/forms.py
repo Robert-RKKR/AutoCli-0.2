@@ -4,6 +4,8 @@ from django.forms import ModelForm
 # Application Import:
 from .models.device import Device
 from .models.color import Color
+from .models.color import Credential
+from .models.color import Group
 
 
 # Forms:
@@ -22,4 +24,22 @@ class ColorForm(ModelForm):
         model = Color
         fields = [
             'name', 'value', 'description', 'devices', 'groups', 'credentials',
+        ]
+
+
+class CredentialForm(ModelForm):
+
+    class Meta:
+        model = Credential
+        fields = [
+            'name', 'username', 'password', 'description',
+        ]
+
+
+class GroupForm(ModelForm):
+
+    class Meta:
+        model = Group
+        fields = [
+            'name', 'description', 'devices',
         ]
