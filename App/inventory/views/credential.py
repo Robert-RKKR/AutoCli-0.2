@@ -1,5 +1,5 @@
 # Application Import:
-from .autocli_view_models import *
+from main.autocli_view_models import *
 from ..models.credential import Credential
 
 # Application Filters Import:
