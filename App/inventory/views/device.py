@@ -47,13 +47,13 @@ def add(request):
             message['message_ico'] = 'inform'
             data['messages'].append(message)
         
-        return render(request, 'add_form.html', data)
+        return render(request, 'add_object.html', data)
     
     elif request.method == 'GET':
      
         data['form'] = DeviceForm()
 
-        return render(request, 'add_form.html', data)
+        return render(request, 'add_object.html', data)
 
 def one(request, pk):
     # Collect object by PK number:
@@ -76,6 +76,7 @@ def one(request, pk):
     #output = single_device_check.delay(device.pk)
     output = single_device_check(device.pk)
     data['output'] = output
+    print('--->', output)
 
     return render(request, 'inventory/one.html', data)
 

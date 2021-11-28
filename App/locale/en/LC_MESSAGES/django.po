@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 23:30+0000\n"
+"POT-Creation-Date: 2021-11-27 21:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,16 +18,172 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: autocli/settings.py:194 inventory/templates/inventory/test.html:54
+#: autocli/settings.py:203
 msgid "English"
 msgstr ""
 
-#: autocli/settings.py:195 inventory/templates/inventory/test.html:58
+#: autocli/settings.py:204
 msgid "German"
 msgstr ""
 
-#: autocli/settings.py:196 inventory/templates/inventory/test.html:62
+#: autocli/settings.py:205
 msgid "Polish"
+msgstr ""
+
+#: inventory/models/color.py:37
+msgid "Hexadecimal representation of colour, for example #73a6ff."
+msgstr ""
+
+#: inventory/models/color.py:39 inventory/models/color.py:40
+#: inventory/models/device.py:55 inventory/models/device.py:56
+msgid "This field is mandatory."
+msgstr ""
+
+#: inventory/models/color.py:41
+msgid ""
+"Enter the correct colour value. It must be a 3/6 hexadecimal number with # "
+"character on begining"
+msgstr ""
+
+#: inventory/models/color.py:76
+msgid "Color"
+msgstr ""
+
+#: inventory/models/color.py:77 templates/base.html:96 templates/base.html:147
+msgid "Colors"
+msgstr ""
+
+#: inventory/models/credential.py:22
+msgid "Credential name"
+msgstr ""
+
+#: inventory/models/credential.py:26
+msgid "User name"
+msgstr ""
+
+#: inventory/models/credential.py:30
+msgid "User password"
+msgstr ""
+
+#: inventory/models/credential.py:34 inventory/models/device.py:79
+msgid "Description"
+msgstr ""
+
+#: inventory/models/credential.py:60
+msgid "Credential"
+msgstr ""
+
+#: inventory/models/credential.py:61 templates/base.html:80
+#: templates/base.html:131
+msgid "Credentials"
+msgstr ""
+
+#: inventory/models/device.py:18
+msgid "Nonactive"
+msgstr ""
+
+#: inventory/models/device.py:19
+msgid "Active"
+msgstr ""
+
+#: inventory/models/device.py:22
+msgid "autodetect"
+msgstr ""
+
+#: inventory/models/device.py:23
+msgid "cisco_ios"
+msgstr ""
+
+#: inventory/models/device.py:24
+msgid "cisco_xr"
+msgstr ""
+
+#: inventory/models/device.py:25
+msgid "cisco_xe"
+msgstr ""
+
+#: inventory/models/device.py:26
+msgid "cisco_nxos"
+msgstr ""
+
+#: inventory/models/device.py:44
+msgid "Device name"
+msgstr ""
+
+#: inventory/models/device.py:50
+msgid "IP address"
+msgstr ""
+
+#: inventory/models/device.py:58
+msgid "Enter a valid IP address or DNS resolvable hostname."
+msgstr ""
+
+#: inventory/models/device.py:61
+msgid "Device type"
+msgstr ""
+
+#: inventory/models/device.py:66
+msgid "Device graphic"
+msgstr ""
+
+#: inventory/models/device.py:71
+msgid "SSH port"
+msgstr ""
+
+#: inventory/models/device.py:75
+msgid "HTTPS port"
+msgstr ""
+
+#: inventory/models/device.py:117
+msgid "Device"
+msgstr ""
+
+#: inventory/models/device.py:118 templates/base.html:72
+#: templates/base.html:123
+msgid "Devices"
+msgstr ""
+
+#: inventory/models/group.py:52
+msgid "Group"
+msgstr ""
+
+#: inventory/models/group.py:53 templates/base.html:88 templates/base.html:139
+msgid "Groups"
+msgstr ""
+
+#: inventory/validators.py:12
+msgid ""
+"Enter the correct colour in hexadecimal notation. This value can only "
+"contain hexadecimal numbers preceded by the # sign."
+msgstr ""
+
+#: inventory/views/autocli_view_models.py:23
+msgid "Add new"
+msgstr ""
+
+#: inventory/views/autocli_view_models.py:78 inventory/views/device.py:45
+msgid "was added to database."
+msgstr ""
+
+#: inventory/views/autocli_view_models.py:79 inventory/views/device.py:46
+#: inventory/views/device.py:109
+msgid "INFORM"
+msgstr ""
+
+#: inventory/views/device.py:34
+msgid "Add new device"
+msgstr ""
+
+#: inventory/views/device.py:87 inventory/views/device.py:127
+msgid "Edit device"
+msgstr ""
+
+#: inventory/views/device.py:108
+msgid "object was edited."
+msgstr ""
+
+#: templates/add_object.html:20
+msgid "Submit"
 msgstr ""
 
 #: templates/base.html:56
@@ -38,22 +194,6 @@ msgstr ""
 msgid "Inventory"
 msgstr ""
 
-#: templates/base.html:72
-msgid "Devices"
-msgstr ""
-
-#: templates/base.html:80
-msgid "Credentials"
-msgstr ""
-
-#: templates/base.html:88
-msgid "Groups"
-msgstr ""
-
-#: templates/base.html:96
-msgid "Colors"
-msgstr ""
-
 #: templates/base.html:107
 msgid "Provisioning"
 msgstr ""
@@ -62,10 +202,18 @@ msgstr ""
 msgid "Diagrams"
 msgstr ""
 
-#: templates/base.html:123
+#: templates/base.html:158
 msgid "Administration"
 msgstr ""
 
-#: templates/base.html:192
+#: templates/base.html:288
 msgid "AutoCli Network Automation Tool"
+msgstr ""
+
+#: templates/search.html:43
+msgid "Created"
+msgstr ""
+
+#: templates/search.html:44
+msgid "Updated"
 msgstr ""

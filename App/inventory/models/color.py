@@ -44,9 +44,9 @@ class Color(models.Model):
     description = models.CharField(max_length=256, default="Color description.")
 
     # Relationships with other models:
-    devices = models.ManyToManyField(Device, through="ColorDeviceRelation")
-    groups = models.ManyToManyField(Group, through="ColorGroupRelation")
-    credentials = models.ManyToManyField(Credential, through="ColorCredentialRelation")
+    devices = models.ManyToManyField(Device, through="ColorDeviceRelation", null=True, blank=True)
+    groups = models.ManyToManyField(Group, through="ColorGroupRelation", null=True, blank=True)
+    credentials = models.ManyToManyField(Credential, through="ColorCredentialRelation", null=True, blank=True)
 
     # Model representation:
     def __str__(self) -> str:
