@@ -137,7 +137,7 @@ class AddViewModel(AutoCliBaseViewModel):
 
 class SearchViewModel(AutoCliBaseViewModel):
     """
-        
+        Search View Model, return all objects page with search bar.
     """
 
     # Class attributes:
@@ -149,13 +149,28 @@ class SearchViewModel(AutoCliBaseViewModel):
     def get(self, request, *args, **kwargs):
         super().get(request)
 
-        # Collect objects:
-        collected_objects = type(self).model.objects.all()
+        # Collect data from name form field:
+        object_name = request.GET.get('object_name')
 
-        # Use filters:
-        objects_filter = type(self).filter(request.GET, queryset=collected_objects)
-        type(self).page_data['objects'] = objects_filter.qs
-        type(self).page_data['filter'] = objects_filter
+        if object_name == '' or object_name is None:
+
+            # Collect objects:
+            collected_objects = type(self).model.objects.all()
+
+            # Use filters:
+            objects_filter = type(self).filter(request.GET, queryset=collected_objects)
+            type(self).page_data['objects'] = objects_filter.qs
+            type(self).page_data['filter'] = objects_filter
+
+        else:
+
+            # Collect filtered objects:
+            collected_filtered_objects = type(self).model.objects.filter(name__icontains=object_name)
+            
+            # Use filters:
+            objects_filter = type(self).filter(request.GET, queryset=collected_filtered_objects)
+            type(self).page_data['objects'] = objects_filter.qs
+            type(self).page_data['filter'] = objects_filter
 
         # Use default add page name:
         type(self).page_data['page_name'] = self.get_page_name(type(self).display_text)
@@ -166,7 +181,7 @@ class SearchViewModel(AutoCliBaseViewModel):
 
 class OneViewModel(AutoCliBaseViewModel):
     """
-        
+        One object View Model, takes pk of object to display details information's about object.
     """
 
     # Class attributes:
@@ -192,7 +207,7 @@ class OneViewModel(AutoCliBaseViewModel):
 
 class UpdateViewModel(AutoCliBaseViewModel):
     """
-        
+        Update View Model, takes form_class attributes contains valid django form and display edit form on page.
     """
 
     # Class attributes:
@@ -248,7 +263,7 @@ class UpdateViewModel(AutoCliBaseViewModel):
 
 class DeleteViewModel(AutoCliBaseViewModel):
     """
-        
+        Delete View Model, deletes object from database.
     """
 
     # Class attributes:
