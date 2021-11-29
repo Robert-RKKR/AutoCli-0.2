@@ -249,6 +249,11 @@
                                     <img class="action-button click-animation" src="{% static 'ico/main/list.svg' %}" alt="Ico">
                                 </div>
                                 <div class="action-group">
+                                    {% if edit %}
+                                        <img id="check-item-button" class="action-button click-animation" src="{% static 'ico/main/edit.svg' %}" alt="Ico">
+                                    {% endif %}
+                                </div>
+                                <div class="action-group">
                                     {% for action in panel %}
                                         {% if action == 'update' or action == 'delete' %}
                                             <a href="{% url action|create_url:model_view_url pk=object_pk %}">

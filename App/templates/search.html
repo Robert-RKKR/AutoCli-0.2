@@ -15,29 +15,37 @@
                 <div class="model-item">
                     <div class="model-subitem grid-box">
 
-                        {% if object.status or object.ssh_status or object.https_status %}
-                            <!-- Box activity -->
-                            <div class="ball-box">
-                                <!-- Active status -->
-                                {% if object.status == 1 %}
-                                <div class="ball ball-active" aria-label="Active"></div>
-                                {% else %}
-                                <div class="ball ball-inactive" aria-label="Active"></div>
-                                {% endif %}
-                                <!-- SSH status -->
-                                {% if object.ssh_status == True %}
-                                    <div class="ball ball-active" aria-label="SSH"></div>
-                                {% else %}
-                                    <div class="ball ball-inactive" aria-label="SSH"></div>
-                                {% endif %}
-                                <!-- HTTPS status -->
-                                {% if object.https_status == True %}
-                                <div class="ball ball-active" aria-label="HTTPS"></div>
-                                {% else %}
-                                <div class="ball ball-inactive" aria-label="HTTPS"></div>
-                                {% endif %}
+                        <div class="model-item-status">
+
+                            {% if object.status or object.ssh_status or object.https_status %}
+                                <!-- Box activity -->
+                                <div class="ball-box">
+                                    <!-- Active status -->
+                                    {% if object.status == 1 %}
+                                    <div class="ball ball-active" aria-label="Active"></div>
+                                    {% else %}
+                                    <div class="ball ball-inactive" aria-label="Active"></div>
+                                    {% endif %}
+                                    <!-- SSH status -->
+                                    {% if object.ssh_status == True %}
+                                        <div class="ball ball-active" aria-label="SSH"></div>
+                                    {% else %}
+                                        <div class="ball ball-inactive" aria-label="SSH"></div>
+                                    {% endif %}
+                                    <!-- HTTPS status -->
+                                    {% if object.https_status == True %}
+                                    <div class="ball ball-active" aria-label="HTTPS"></div>
+                                    {% else %}
+                                    <div class="ball ball-inactive" aria-label="HTTPS"></div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+
+                            <div>
+                                <input class="check-item collapse" type="checkbox">
                             </div>
-                        {% endif %}
+
+                        </div>
 
                         <!-- Single model item header -->
                         <div class="model-item-header">

@@ -19,7 +19,8 @@ class AutoCliBaseViewModel(View):
     display = None
     model_view_url = None
     page_data = {}
-    grid = False
+    grid = True
+    edit = None
 
     def get(self, request, *args, **kwargs):
 
@@ -39,6 +40,7 @@ class AutoCliBaseViewModel(View):
             'display': type(self).display,
             'model_view_url': type(self).model_view_url,
             'grid': type(self).grid,
+            'edit': type(self).edit,
         }
 
     def post(self, request, *args, **kwargs):
@@ -150,6 +152,9 @@ class SearchViewModel(AutoCliBaseViewModel):
 
     def get(self, request, *args, **kwargs):
         super().get(request)
+
+        # Add edit option to panel:
+        type(self).edit = True
 
         # Collect data from name form field:
         object_name = request.GET.get('object_name')

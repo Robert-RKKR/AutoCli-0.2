@@ -48,11 +48,41 @@ for(let i=0; i<toggleButtons.length; i++) {
     });
 }
 
+// CHECK ITEM ACTION:
+let box_items_button = document.getElementById("check-item-button");
+
+box_items_button.addEventListener("click", function(event) {
+    let box_item_checks = document.getElementsByClassName("check-item");
+
+    for(let i=0; i<box_item_checks.length; i++) {
+        let box_item_check = box_item_checks[i]
+
+        if(box_item_check.classList.contains("collapse") === true) {
+            box_item_check.classList.remove("collapse");
+        } else {
+            box_item_check.classList.add("collapse");
+        }
+
+    }
+})
+
+let box_items = document.getElementsByClassName("model-item");
+
+for(let i=0; i<box_items.length; i++) {
+    let box_item = box_items[i];
+    let box_item_check = box_item.getElementsByClassName("check-item");
+    
+    box_item.addEventListener("click", function(event) {
+        box_item_check.checked = true;
+    })
+
+}
+
 // MESSAGE CLOSE ACTION:
 var messages = document.getElementsByClassName("message");
 
 for(let i=0; i<messages.length; i++) {
-    let message = messages[i]
+    let message = messages[i];
     let closeButton = message.getElementsByClassName("message-close")[0];
     
     closeButton.addEventListener("click", function(event) {
