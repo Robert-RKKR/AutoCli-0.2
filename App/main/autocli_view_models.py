@@ -19,6 +19,7 @@ class AutoCliBaseViewModel(View):
     display = None
     model_view_url = None
     page_data = {}
+    grid = False
 
     def get(self, request, *args, **kwargs):
 
@@ -37,6 +38,7 @@ class AutoCliBaseViewModel(View):
             'model': type(self).model,
             'display': type(self).display,
             'model_view_url': type(self).model_view_url,
+            'grid': type(self).grid,
         }
 
     def post(self, request, *args, **kwargs):

@@ -5,66 +5,102 @@
 
 {% block content %}
 
-    <!-- Grid container for models -->
-    <div id="model-grid">
-        
-        {% for object in objects %}
-            <!-- Single model item -->
-            <div class="model-item">
-                <div class="model-subitem grid-box">
+    {% if grid %}
 
-                    {% if object.status or object.ssh_status or object.https_status %}
-                        <!-- Box activity -->
-                        <div class="ball-box">
-                            <!-- Active status -->
-                            {% if object.status == 1 %}
-                            <div class="ball ball-active" aria-label="Active"></div>
-                            {% else %}
-                            <div class="ball ball-inactive" aria-label="Active"></div>
-                            {% endif %}
-                            <!-- SSH status -->
-                            {% if object.ssh_status == True %}
-                                <div class="ball ball-active" aria-label="SSH"></div>
-                            {% else %}
-                                <div class="ball ball-inactive" aria-label="SSH"></div>
-                            {% endif %}
-                            <!-- HTTPS status -->
-                            {% if object.https_status == True %}
-                            <div class="ball ball-active" aria-label="HTTPS"></div>
-                            {% else %}
-                            <div class="ball ball-inactive" aria-label="HTTPS"></div>
-                            {% endif %}
-                        </div>
-                    {% endif %}
+        <!-- Grid container for models -->
+        <div id="model-grid">
+            
+            {% for object in objects %}
+                <!-- Single model item -->
+                <div class="model-item">
+                    <div class="model-subitem grid-box">
 
-                    <!-- Single model item header -->
-                    <div class="model-item-header">
-                        {% if object.ico %}
-                            <img class="box-header-svg" src="/{{ object.get_ico_display }}" alt="switch">
+                        {% if object.status or object.ssh_status or object.https_status %}
+                            <!-- Box activity -->
+                            <div class="ball-box">
+                                <!-- Active status -->
+                                {% if object.status == 1 %}
+                                <div class="ball ball-active" aria-label="Active"></div>
+                                {% else %}
+                                <div class="ball ball-inactive" aria-label="Active"></div>
+                                {% endif %}
+                                <!-- SSH status -->
+                                {% if object.ssh_status == True %}
+                                    <div class="ball ball-active" aria-label="SSH"></div>
+                                {% else %}
+                                    <div class="ball ball-inactive" aria-label="SSH"></div>
+                                {% endif %}
+                                <!-- HTTPS status -->
+                                {% if object.https_status == True %}
+                                <div class="ball ball-active" aria-label="HTTPS"></div>
+                                {% else %}
+                                <div class="ball ball-inactive" aria-label="HTTPS"></div>
+                                {% endif %}
+                            </div>
                         {% endif %}
-                        <div>
-                            <h3><a href="{% url 'one'|create_url:model_view_url pk=object.pk %}">{{ object.name }}</a></h3>
-                            <q>{% translate "Created" %}: {{ object.created }}</q></br>
-                            <q>{% translate "Updated" %}: {{ object.updated }}</q>
+
+                        <!-- Single model item header -->
+                        <div class="model-item-header">
+                            {% if object.ico %}
+                                <img class="box-header-svg" src="/{{ object.get_ico_display }}" alt="switch">
+                            {% endif %}
+                            <div>
+                                <h3><a href="{% url 'one'|create_url:model_view_url pk=object.pk %}">{{ object.name }}</a></h3>
+                                <q>{% translate "Created" %}: {{ object.created }}</q></br>
+                                <q>{% translate "Updated" %}: {{ object.updated }}</q>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Single model item body -->
-                    <div class="model-item-body">
-                        <table>
-                            {% for row in display %}
-                                <tr>
-                                    <th>{{ row|title }}:</th>
-                                    <td>{{ object|key_value:row }}</td>
-                                </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
+                        <!-- Single model item body -->
+                        <div class="model-item-body">
+                            <table>
+                                {% for row in display %}
+                                    <tr>
+                                        <th>{{ row|title }}:</th>
+                                        <td>{{ object|key_value:row }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
 
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
 
-    </div>
+        </div>
+
+    {% else %}
+
+        <!-- Table -->
+        <div class="table grid-box">
+
+            <table class="shadow table-hover table-blue">
+                <thead>
+                    <tr>
+                        <th scope="col">{% translate "Name" %}</th>
+                        <th scope="col">{% translate "Created" %}</th>
+                        <th scope="col">{% translate "Updated" %}</th>
+                        {% for row in display %}
+                            <th scope="col">{{ row|title }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for object in objects %}
+                        <tr>
+                            <th><a href="{% url 'one'|create_url:model_view_url pk=object.pk %}">{{ object.name }}</a></th>
+                            <td>{{ object.created }}</td>
+                            <td>{{ object.updated }}</td>
+                            {% for row in display %}
+                                <td>{{ object|key_value:row }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+    {% endif %}
     
 {% endblock %}
