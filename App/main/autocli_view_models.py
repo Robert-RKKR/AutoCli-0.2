@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import View
 
 # Class:
+
 class AutoCliBaseViewModel(View):
     """
         Base AutoCli View Model, contains basic attributes and methods used by other View Models.

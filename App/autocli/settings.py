@@ -73,6 +73,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'administration.auth.AuthRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'autocli.urls'
