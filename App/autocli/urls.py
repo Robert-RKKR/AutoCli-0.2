@@ -33,5 +33,6 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns (
     path('inventory/', include('inventory.urls')),
+    path('administration/', include('administration.urls')),
     prefix_default_language=True,
 )
