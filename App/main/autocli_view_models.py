@@ -207,7 +207,7 @@ class OneViewModel(AutoCliBaseViewModel):
         type(self).page_data['object_pk'] = kwargs['pk']
 
         # Use default add page name:
-        type(self).page_data['page_name'] = self.get_page_name(collected_object.name)
+        type(self).page_data['page_name'] = self.get_page_name(type(self).display_text)
 
         # Return valid page with provided or default data:
         return render(request, self.get_attribute(type(self).template, 'one_object.html'), self.page_data)

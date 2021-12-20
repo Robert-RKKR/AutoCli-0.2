@@ -4,8 +4,11 @@ from .views.device import *
 from .views.credential import *
 from .views.group import *
 from .views.color import *
+from .views.test import test
 
 urlpatterns = [
+    path('test', test, name='test'),
+
     # ------------------ DEVICE ------------------ #
     re_path(r'^device/search/get?$', DeviceSearchView.as_view(), name='device_search'),
     path('device/add/', DeviceAddView.as_view(), name='device_add'),

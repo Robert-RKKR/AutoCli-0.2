@@ -69,6 +69,7 @@ def single_device_check(self, device_pk: int) -> bool:
         if https_connection.status is True:
             device.https_status = True
             device.ssh_status = True
+            status = True
             device.save()
         else:
             # Connect to device using SSH connection:
@@ -78,10 +79,12 @@ def single_device_check(self, device_pk: int) -> bool:
             if ssh_connection.status is True:
                 device.https_status = False
                 device.ssh_status = True
+                status = True
                 device.save()
             else:
                 device.https_status = False
                 device.ssh_status = False
+                status = False
                 device.save()
 
     else: # If device variable is not a intiger, raise type error:
